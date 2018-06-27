@@ -1,6 +1,6 @@
 # ERDDAP
 
-An overview of **NOAA**'s **_ERDDAP_** data server including a walk through of a setup and configuration.
+An overview of **NOAA**'s **_ERDDAP_** data server including a sample setup and configuration.
 
  
  ---
@@ -56,3 +56,12 @@ Focus is on making it easier to get scientific data.
 5. Has *RESTful* web services for searching for datasets, downloading data and making maps.
 
 ---
+
+## Setup
+
+Creator Bob Simons (https://github.com/BobSimons) has compiled comprehensive instructions to follow for an ***ERDDAP*** install: http://coastwatch.pfeg.noaa.gov/erddap/download/setup.html
+
+   + **ERDDAP** connects using the *jtds JDBC connector* and the *EDDTableFromDatabase*.
+   
+   + Each dataset is presented in a single flat view per dataset to **ERDDAP**, e.g. [Marine Institute Weather Buoy Network](https://erddap.marine.ie/erddap/tabledap/IWBNetwork.html).
+
