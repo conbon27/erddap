@@ -57,11 +57,25 @@ Focus is on making it easier to get scientific data.
 
 ---
 
-## Setup
+## Advantages
 
-Creator Bob Simons (https://github.com/BobSimons) has compiled comprehensive instructions to follow for an ***ERDDAP*** install: http://coastwatch.pfeg.noaa.gov/erddap/download/setup.html
+Acting as a middleman between the user and the data source allows ERDDAP to have several useful features, including:
+
+   +
+   
+      -
+      
+      -
+
+
+---
+
+## Install
+
+Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [instructions](http://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) to follow for an ***ERDDAP*** install. 
 
    + **ERDDAP** connects using the *jtds JDBC connector* and the *EDDTableFromDatabase*.
    
    + Each dataset is presented in a single flat view per dataset to **ERDDAP**, e.g. [Marine Institute Weather Buoy Network](https://erddap.marine.ie/erddap/tabledap/IWBNetwork.html).
 
+---
