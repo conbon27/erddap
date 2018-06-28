@@ -109,7 +109,7 @@ Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [i
 ---
 ## Setup.xml
 
-Configure your ERDDAP instance using the [setup.xml]() file (included in the content folder in ERDDAP after unzip):
+Configure your **ERDDAP** instance using the [setup.xml](https://github.com/conbon27/erddap/blob/master/setup.xml) file (included in the content folder in ERDDAP after unzip):
 
    - You must set basic information like where you will save your parent directory (filled with logs and the like).
 
@@ -121,7 +121,7 @@ Configure your ERDDAP instance using the [setup.xml]() file (included in the con
    
    - Email details (including log-ins) for **ERDDAP** if you want the server itself to send out emails when needed (errors, etc).
  
-[Here]() is an example of a functioning **setup.xml** file to follow to get you going.
+[Here](https://github.com/conbon27/erddap/blob/master/setup.xml) is an example of a functioning **setup.xml** file to follow to get you going.
 
 ---
 ## Datasets.xml
@@ -151,6 +151,6 @@ Ensure that the data can be viewed in-browser, so that you receive no numbered e
  
 To support metadata vocabularies, you can manually enter in what **IOOS** category each parameter equates.
  
-[Here]() is a sample **datasets.xml** file to use when setting up an instance.
+[Here](https://github.com/conbon27/erddap/blob/master/datasets.xml) is a sample **datasets.xml** file to use when setting up an instance.
 
 ---
