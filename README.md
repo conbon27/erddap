@@ -98,7 +98,7 @@ Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [i
 
    + **ERDDAP** will run on any server which supports both Java and Tomcat, so AWS, Linux, Mac, Windows and even Docker. 
 
-   + For best results, you're best to work on a **Linux** server with both Java and Tomcat web server installed. 
+   + For best results, you're best to work on a **Linux** server with newer versions of *Java and Tomcat* web server installed. 
    
    + Download [ERDDAP](https://coastwatch.pfeg.noaa.gov/erddap/download/erddapContent.zip), extract and deploy it to the WebApps folder in the Tomcat directory.
 
@@ -109,7 +109,7 @@ Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [i
 ---
 ## Setup.xml
 
-Configure your ERDDAP instance using the [setup.xml]() file (included in the content folder in ERDDAP after install):
+Configure your ERDDAP instance using the [setup.xml]() file (included in the content folder in ERDDAP after unzip):
 
    - You must set basic information like where you will save your parent directory (filled with logs and the like).
 
@@ -117,7 +117,7 @@ Configure your ERDDAP instance using the [setup.xml]() file (included in the con
    
    - Email and ERDDAP admin information in case of error or the need to be contacted.
    
-   - Details of the organisation that has ownership of the ERDDAP as well as its data.
+   - Details of the organisation that has ownership of the **ERDDAP** instance as well as its data.
    
    - Email details (including log-ins) for **ERDDAP** if you want the server itself to send out emails when needed (errors, etc).
  
@@ -131,23 +131,23 @@ This understanding comes from configuring the **Datasets.xml** with database det
 
 Use Bob's included ***generatedatasets.xml*** script to automate the basic outline creation of the xml required for a particular dataset, otherwise it will take a while and you **will** make mistakes.
  
-      This will ask you questions such as the location of the *dataset, its username, password, the associated schema, the primary key* and various other general pieces of connection specific information required to connect and understand the source data.
+   This will ask you questions such as the location of the *dataset, its username, password, the associated schema, the primary key* and various other general pieces of connection specific information required to connect and understand the source data.
  
 Following the successful completion of the dataset questionnaire (if it's unsuccessful, an error trace will be produced and you can use that along with the *log.txt* file in the **ERDDAP** folder to debug your code), copy in the produced xml data to the bottom of the existing *datasets.xml* file.
  
-All going well, the next time the **ERDDAP** instance is updated (either according to the timer set up by minutes in *setup.xml* or by you manually rebooting the service on **Tomcat**), the dataset should appear in the ERDDAP index.
+All going well, the next time the **ERDDAP** instance is updated (either according to the timer set up by minutes in *setup.xml* or by you manually rebooting the service on **Tomcat**), the dataset should appear in the **ERDDAP** index.
  
 Ensure that the data can be viewed in-browser, so that you receive no numbered errors and can fully interrogate the data in GEOJSON.
 
-      - If GEOJSON is inaccessible, you may need to introduce a small script to generate longitude/latitude based on a geometric data type or add a tummy time field to each row of data you want displayed in the database.
+   - If *GEOJSON* is inaccessible, you may need to introduce a small script to generate *longitude/latitude* based on a geometric data type or add a tummy time field to each row of data you want displayed in the database.
 
-      - Depending on your source DBMS, this can be achieved using scripts to create and add data to views.
+   - Depending on your source DBMS, this can be achieved using scripts to create and add data to views.
 
-      - Once a view is created, you can add that to the datasets.xml file in the same way as you followed above and it should pass testing this time.
+   - Once a view is created, you can add that to the *datasets.xml* file in the same way as you followed above and it should pass testing this time.
 
-      - You may need to add the SRID to the dataset.
+   - You may need to add an *SRID* to the dataset.
 
-      - The dataset should then support **WMS** features.
+   - The dataset should then support **WMS** features.
  
 To support metadata vocabularies, you can manually enter in what **IOOS** category each parameter equates.
  
