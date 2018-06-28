@@ -2,16 +2,14 @@
 
 An overview of **NOAA**'s **_ERDDAP_** data server including a sample setup and configuration.
 
- 
- ---
-![alt text][logo]
+---
+![ERDDAP in Action][logo]
 
 [logo]: http://www.digital-geography.com/wp-content/uploads/2016/03/MakeGraph.png "Example ERDDAP Interface"
 
 
 ---
 **ERDDAP** is a data server that gives you a simple, consistent way to download subsets of scientific datasets in common file formats & then make graphs/maps.
-
 
 ---
 Free and open source with a basic interface which overlays the data. It breaks data into **2** forms:
@@ -56,26 +54,65 @@ Focus is on making it easier to get scientific data.
 5. Has *RESTful* web services for searching for datasets, downloading data and making maps.
 
 ---
-
 ## Advantages
 
-Acting as a middleman between the user and the data source allows ERDDAP to have several useful features, including:
+Acting as a middleman between the user and the data source allows **ERDDAP** to have several useful features, including:
 
-   +
+   1. The ability to modify and add to each dataset's existing metadata:
    
-      -
+      - _Metadata_ is the who, what, when, where, why and how inform about each dataset that helps users understand it.
       
-      -
-
+      - As functionality has been improved, **ERDDAP** can generate ***ISO 19115 metadata files***, the format required for US Government's data catalogs, while others such as ***MEDIN*** can be configured also.
+      
+   2. Standardized time data formats:
+   
+      - Makes it easier to compare data from different datasets.
+      
+      - Avoids the horrendous ordeal of dealing with a multitude of existing varying date time formats.
+      
+   3. Provides a unified way for users to search for datasets:
+   
+       - Via Google-like,  full-text search, via category browsing (aka faceted search) and via advanced search, which combines all search options.
+       
+   4. Offers a standard way to request a subset of the data from any dataset:
+   
+        - via **web applications** -- web pages with forms for humans.
+        
+        - via **web services** -- where one *RESTful* URL specifies the entire request.
+        
+   5. Allows users to specify the **response file format**, which ERDDAP generates **on-the-fly**:
+   
+        - No time wasted converting data from one format to another.
+        
+        - **20** different data file types.
+        
+        - Some image file types, so users can request customized maps and graphs.
+       
+      
+ All of the features are designed to make life easier for data providers and for users.     
 
 ---
-
 ## Install
 
-Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [instructions](http://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) to follow for an ***ERDDAP*** install. 
+Creator [Bob Simons](https://github.com/BobSimons) has compiled comprehensive [instructions](http://coastwatch.pfeg.noaa.gov/erddap/download/setup.html) to follow for an **ERDDAP** install. 
 
    + **ERDDAP** connects using the *jtds JDBC connector* and the *EDDTableFromDatabase*.
    
    + Each dataset is presented in a single flat view per dataset to **ERDDAP**, e.g. [Marine Institute Weather Buoy Network](https://erddap.marine.ie/erddap/tabledap/IWBNetwork.html).
 
 ---
+## Setup
+
+Configure your ERDDAP instance using the setup.xml file (included in the content folder in ERDDAP):
+
+   - You must set basic information like where you will save your parent directory (filled with logs and the like).
+
+   - Set the access point for your server (i.e. Its URL).
+   
+   - Email and ERDDAP admin information in case of error or the need to be contacted.
+   
+   - Details of the organisation that has ownership of the ERDDAP and its data.
+   
+   - Email details (including log-ins) for ERDDAP if you want the server itself to send out emails when needed.
+ 
+[Here] is an example of a functioning **setup.xml** file to follow to get you going.
