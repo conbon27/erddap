@@ -1,0 +1,3846 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<erddapDatasets>
+<!-- GENERAL INFORMATION
+The information in this file specifies which datasets your ERDDAP will serve.
+The initial version of this file has a few examples which should work for you.
+But after your initial experiments with ERDDAP, 
+you should replace them with information for your datasets.
+
+You can change this document (e.g., add datasets, change metadata) while ERDDAP is running. 
+The changes will be detected the next time this document is read
+(as often as setup.xml loadDatasetsMinMinutes).
+
+Each dataset has a reloadEveryNMinutes value (default = 10080 (one week)).
+When this document is reread, datasets that haven't been been reloaded in 
+their reloadEveryNMinutes will be reloaded.
+You only need to specify a reloadEveryNMinutes value if you anticipate that
+the dataset will change periodically.
+
+If this document has an xml error, processing will stop and an email
+will be sent to emailEverythingTo as specified in setup.xml.
+
+If you want to remove a dataset while ERDDAP is running, add 
+    active="false"
+to the dataset tag.  For example,
+    <dataset type="EDDGridFromDap" datasetID="erdMHchla8day" active="false">
+
+For more information, see 
+http://coastwatch.pfel.noaa.gov/erddap/download/setupDatasetsXml.html
+-->
+
+<!-- If you want to refuse requests from certain clients
+  (e.g., to fend off a Denial of Service attack or an overly zealous web robot), 
+  add their numeric IP address (e.g., 123.45.67.89) to this comma-separated list. 
+  You can also replace the last number in an IP address with * to block 0-255 (e.g., 123.45.67.*).
+  See your ERDDAP daily report for a list/tally of the most active requesters. -->
+<requestBlacklist></requestBlacklist>
+
+<!-- If you want to prevent specific people from using the email/URL subscription
+     system, uncomment the following tag and add their email addresses to the comma-separated list. 
+<subscriptionEmailBlacklist>some.name@company.com, another.name@company.com</subscriptionEmailBlacklist>
+-->
+
+<!-- These convert the local sourceUrl (used in dataset tags) 
+into the public sourceUrl (which appears in a dataset's globalAttributes).
+This is only needed if some datasets use non-public sourceUrl's
+(usually because their computer is in your DMZ or a local LAN). 
+'from' and 'to' are the start of the URLs and are case sensitive.
+'from' must be '[something]//[something]/' . 
+For example,
+<convertToPublicSourceUrl from="http://192.168.31.18/" to="http://oceanwatch.pfeg.noaa.gov/" />
+will cause a matching local sourceUrl (such as http://192.168.31.18/thredds/dodsC/satellite/BA/ssta/5day)
+into a public sourceUrl (http://oceanwatch.pfeg.noaa.gov/thredds/dodsC/satellite/BA/ssta/5day). 
+-->
+<!--
+<convertToPublicSourceUrl from="http://192.168.31.18/" to="http://oceanwatch.pfeg.noaa.gov/" />
+<convertToPublicSourceUrl from="http://192.168.31.27/" to="http://thredds1.pfeg.noaa.gov/"   />
+-->
+
+<dataset type="EDDGridFromEtopo" datasetID="etopo180" />
+
+<dataset type="EDDGridFromEtopo" datasetID="etopo360" />
+
+
+
+<!--
+<dataset type="EDDTableFromOBIS" datasetID="aadcArgos">
+    <sourceUrl>http://aadc-maps.aad.gov.au/digir/digir.php</sourceUrl>
+    <sourceCode>argos_tracking</sourceCode>
+    <addAttributes>
+        <att name="citation">See the following Metadata records http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/DB_Argos_PTT_Tracking http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/HI_animaltracks_ARGOS http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/Tracking_BI http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/Tracking_Mag http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/STA_Bibliography http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/Tracking_SI http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/Tracking_EDP http://data.aad.gov.au/aadc/metadata/metadata_redirect.cfm?md=AMD/AU/Tracking_DD Contact Data Centre for help on citation details.</att>
+        <att name="creator_email">kim.finney@aad.gov.au</att>
+        <att name="infoUrl">http://data.aad.gov.au/</att>
+        <att name="institution">AADC</att>
+        <att name="keywords">ARGOS, satellite tracking, penguins, whales, seals, albatrosses,
+Biosphere &gt; Aquatic Ecosystems &gt; Benthic Habitat,
+Biosphere &gt; Aquatic Ecosystems &gt; Coastal Habitat,
+Biosphere &gt; Aquatic Ecosystems &gt; Demersal Habitat,
+Biosphere &gt; Aquatic Ecosystems &gt; Marine Habitat,
+Biosphere &gt; Aquatic Ecosystems &gt; Pelagic Habitat,
+Biological Classification &gt; Animals/Vertebrates &gt; Birds,
+Biological Classification &gt; Animals/Vertebrates &gt; Mammals &gt; Cetacean
+</att>
+        <att name="keywords_vocabulary">GCMD Science Keywords</att>
+        <att name="license">[standard]</att>
+        <att name="summary">
+Various species have been tracked using ARGOS PTT trackers since the early 1990's. These include Emperor, King and Adelie pengiuns, Light-mantled Sooty, Grey-headed and Black-browed albatrosses, Antarctic and Australian fur seals, Southern Elephant Seal and Blue and Humpback whales. Note that not all data for any species or locations is or will be exposed to OBIS. Geographic coverage is from Heard Island to the west and Macquarie Island to the east and several islands near the southern end of Chile. The data has been filtered to remove most but not all erroneous positions.
+
+[OBIS_SUMMARY]
+
+Available Genera (and number of records): (error)
+</att>
+        <att name="title">OBIS - ARGOS Satellite Tracking of Animals</att>
+    </addAttributes>
+</dataset>
+-->
+
+
+
+<!-- Here are some excellent gridded datasets that you can include in your ERDDAP
+     via EDDGridFromErddap links. All requests for actual data from these
+     datasets get rerouted to the source server. -->
+<!-- Deleted see original datasets.xml -->
+
+<dataset type="EDDTableFromNcFiles" datasetID="IMI-TidePrediction">
+		<nDimensions>3</nDimensions>
+		<reloadEveryNMinutes>1044</reloadEveryNMinutes>
+		<fileDir>/opt/data/tide/</fileDir>
+		<recursive>false</recursive>
+		<fileNameRegex>.*\.nc</fileNameRegex>
+		<metadataFrom>last</metadataFrom>
+		<preExtractRegex>^TP_</preExtractRegex> 
+		<postExtractRegex>\x2Enc$</postExtractRegex>
+		<extractRegex>.*</extractRegex>
+		<columnNameForExtract>stationID</columnNameForExtract>
+		<sortedColumnSourceName>time</sortedColumnSourceName>
+		<!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+		<addAttributes>
+		<att name="cdm_data_type">TimeSeries</att>
+		<att name="cdm_timeseries_variables">stationID, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="Metadata_Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="date_created">null</att>
+        <att name="date_issued">null</att>
+        <att name="id">null</att>
+        <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">EARTH SCIENCE &gt; Tide</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">http://www.marine.ie/</att>
+        <att name="subsetVariables">stationID, longitude, latitude</att>
+        <att name="summary">MI Tide Prediction</att>
+        <att name="title">MI Tide Prediction</att>
+    </addAttributes>
+	<dataVariable>
+        <sourceName>time</sourceName> 
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+		 <addAttributes>
+		 <!--<att name="data_min" type="double">1325376000</att>
+		 <att name="data_max" type="double">1420070400</att>-->
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+		 <att name="missing_value">-9999</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>lon</sourceName> 
+        <destinationName>longitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>lat</sourceName> 
+        <destinationName>latitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>	
+	<dataVariable>
+        <sourceName>stationID</sourceName> 
+        <destinationName>stationID</destinationName>
+        <dataType>String</dataType>
+		<addAttributes>
+		    <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+		</addAttributes>
+    </dataVariable>	
+    <dataVariable>
+        <sourceName>sea_surface_height_above_lat</sourceName> 
+        <destinationName>Water_Level</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Sea Level</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>sea_surface_height_od_malin</sourceName> 
+        <destinationName>Water_Level_ODM</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Sea Level</att>
+        </addAttributes>
+    </dataVariable>
+	<defaultDataQuery>&amp;time&gt;=now-1day&amp;time&lt;=now+2days</defaultDataQuery>
+	<!--<defaultDataQuery>&amp;time&gt;=now-1day</defaultDataQuery>-->
+	<defaultGraphQuery>longitude,latitude,Water_Level&amp;time>=now-1day&amp;time&lt;=now+2days&amp;&amp;.marker=5|5</defaultGraphQuery>
+	<!--<defaultGraphQuery>longitude,latitude,Water_Level&amp;time&gt;=now-1day&amp;.marker=5|5</defaultGraphQuery>-->
+</dataset>
+
+<dataset type="EDDTableFromDatabase" datasetID="IrishNationalTideGaugeNetwork">	
+   <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IrishTides</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>IrishTidesData</tableName>
+	<orderBy>DataSourceID,RecordedTime</orderBy>
+    <reloadEveryNMinutes>5</reloadEveryNMinutes> 
+    <!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+    <addAttributes>
+	<att name="cdm_data_type">TimeSeries</att>
+	<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://catalog.marine.ie/geonetwork/srv/en/main.home?uuid=0da11e42-2d03-4c64-8b0d-0e78c04efc34</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-12</att>
+        <att name="summary">The Irish National Tide Gauge Network is an on-going development involving the Marine Institute and a number of organisations in the public and private sectors to develop a permanent tidal monitoring infrastructure, ultimately consisting of between 35 and 40 stations.</att>
+        <att name="title">Irish National Tide Gauge Network</att>
+		<att name="subsetVariables">station_id, longitude, latitude</att> 			
+	</addAttributes>
+    <dataVariable>
+        <sourceName>Longitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Latitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+	<dataVariable>
+        <sourceName>depth</sourceName>
+		<destinationName>altitude</destinationName>
+		<dataType>float</dataType>		
+        <addAttributes>
+		 <att name="units">m</att>
+           <att name="actual_range" type="doubleList">0 0</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>WebDisplayName</sourceName> 
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Water_Level</sourceName>
+		<dataType>float</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Sea Level</att>
+			<att name="long_name">sea level above LAT</att>
+			<att name="standard_name">sea surface height above local LAT Lowest Astronomical Tide </att>
+			<att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Water_Level_LAT</sourceName>
+		<dataType>float</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Sea Level</att>
+			<att name="long_name">sea level above LAT</att>
+			<att name="standard_name">sea surface height above local LAT Lowest Astronomical Tide </att>
+			<att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+<dataVariable>
+        <sourceName>Water_Level_OD_Malin</sourceName>
+		<dataType>float</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Sea Level</att>
+			<att name="long_name">sea level OD Malin</att>
+			<att name="standard_name">sea surface height Ordnance Datum Malin</att>
+			<att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+<dataVariable>
+        <sourceName>QC_Flag</sourceName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">Quality Control Flags</att>
+        </addAttributes>
+    </dataVariable>        
+  </dataset>
+<dataset type="EDDTableFromDatabase" datasetID="IrishNationalTideGaugeNetworkRiverGauges">	
+   <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IrishTides</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>IrishTidesRiverGaugeCombinedData</tableName>
+	<orderBy>DataSourceID,RecordedTime</orderBy>
+    <reloadEveryNMinutes>5</reloadEveryNMinutes> 
+    <addAttributes>
+	<att name="cdm_data_type">TimeSeries</att>
+	<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://catalog.marine.ie/geonetwork/srv/en/main.home?uuid=0da11e42-2d03-4c64-8b0d-0e78c04efc34</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-12</att>
+        <att name="summary">The Irish National Tide Gauge Network is an on-going development involving the Marine Institute and a number of organisations in the public and private sectors to develop a permanent tidal monitoring infrastructure, ultimately consisting of between 35 and 40 stations.</att>
+        <att name="title">Irish National Tide Gauge Network River Gauges</att>
+		<att name="subsetVariables">station_id, longitude, latitude</att> 			
+	</addAttributes>
+    <dataVariable>
+        <sourceName>Longitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Latitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+	<dataVariable>
+        <sourceName>depth</sourceName>
+		<destinationName>altitude</destinationName>
+		<dataType>float</dataType>		
+        <addAttributes>
+		   <att name="units">m</att>
+           <att name="actual_range" type="doubleList">0 0</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>WebDisplayName</sourceName> 
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+<dataVariable>
+        <sourceName>Water_Level</sourceName>
+		<dataType>float</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Sea Level</att>
+			<att name="long_name">Water level</att>
+			<att name="standard_name">Water level</att>
+			<att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+<dataVariable>
+        <sourceName>Water_Temperature</sourceName>
+		<dataType>float</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+			<att name="long_name">Water Temperature</att>
+			<att name="standard_name">Water_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="colorBarMaximum">30.0</att>
+			<att name="colorBarMinimum">0</att>
+        </addAttributes>
+    </dataVariable>
+  </dataset>
+ <dataset type="EDDGridFromDap" datasetID="IMI_CONN_2D">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI-CONN_AGG</sourceUrl>
+	<!--<sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_ROMS_HYDRO/CONNEMARA_250M_20L_3H/FORECAST/2012011715.nc</sourceUrl>-->
+        <reloadEveryNMinutes>720</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+			<att name="license">[standard]</att>
+            <att name="title">Irish Marine Institute Connemara Model CONN2D</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">CONN2D</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">70.0</att>
+            <att name="geospatial_lat_min">40.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution"> 0.1</att>
+            <att name="geospatial_lon_max">10.0</att>
+            <att name="geospatial_lon_min">-40.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+        </addAttributes>
+		<axisVariable>
+            <sourceName>ocean_time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 1968-05-23 00:00:00</att>
+                <att name="time_origin">23-MAY-1968 00:00:00</att>                 
+            </addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>eta_rho</sourceName>
+            <destinationName>latitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+        </axisVariable>		
+	    <axisVariable>
+            <sourceName>xi_rho</sourceName>
+            <destinationName>longitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+		</axisVariable>
+		
+		<dataVariable>
+        <sourceName>zeta</sourceName> 
+        <destinationName>zeta</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Sea Level</att>
+			<att name="long_name">Sealevel Height</att>
+			<att name="standard_name">sea_surface_height</att>
+			<att name="units">m</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">3.0</att>
+			<att name="colorBarMinimum">-3.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>ubar</sourceName> 
+        <destinationName>barotropic_sea_water_x_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">U barotropic velocity component</att>
+			<att name="standard_name">barotropic_sea_water_x_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>		
+		<dataVariable>
+        <sourceName>vbar</sourceName> 
+        <destinationName>barotropic_sea_water_y_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">V barotropic velocity component</att>
+			<att name="standard_name">barotropic_sea_water_y_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>			
+</dataset>
+<dataset type="EDDGridFromDap" datasetID="IMI_CONN_3D">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI-CONN_AGG</sourceUrl>
+	<!--<sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_ROMS_HYDRO/CONNEMARA_250M_20L_3H/FORECAST/2012011715.nc</sourceUrl>-->
+        <reloadEveryNMinutes>720</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+            <att name="title">Irish Marine Institute Connemara Model CONN3D</att>
+			<att name="license">[standard]</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">CONN3D</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">70.0</att>
+            <att name="geospatial_lat_min">40.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution"> 0.1</att>
+            <att name="geospatial_lon_max">10.0</att>
+            <att name="geospatial_lon_min">-40.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+        </addAttributes>
+		<axisVariable>
+            <sourceName>ocean_time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 1968-05-23 00:00:00</att>
+                <att name="time_origin">23-MAY-1968 00:00:00</att>                 
+            </addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>N</sourceName>
+            <destinationName>altitude</destinationName>
+			<addAttributes>
+			<att name="positive">up</att>
+			<att name="ioos_category">Location</att>
+			<att name="Comment">The ROMS model uses the so-called sigma vertical coordinate system which is terrain-following (i.e. thickness of levels vary with total water depth within the model domain). Therefore, in the case of the Connemara model, the altitude Dimension does not refer to depth, but to model level where 1 is the bottom level and 20 is the level at the sea surface. Level 10/11 is approximately mid water but the other model levels can not be ascribed to any single depth level.</att>
+			</addAttributes>
+        </axisVariable>	
+		<axisVariable>
+            <sourceName>eta_rho</sourceName>
+            <destinationName>latitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+        </axisVariable>		
+	    <axisVariable>
+            <sourceName>xi_rho</sourceName>
+            <destinationName>longitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+		</axisVariable>
+			
+
+		<dataVariable>
+        <sourceName>temp</sourceName> 
+        <destinationName>Sea_water_temperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Temperature</att>
+			<att name="long_name">Water Temperature</att>
+			<att name="standard_name">sea_water_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">17.85</att>
+			<att name="colorBarMinimum">5</att>
+			<att name="coordinates">time altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		
+		<dataVariable>
+        <sourceName>salt</sourceName> 
+        <destinationName>Sea_water_salinity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Salinity</att>
+			<att name="long_name">Salinity</att>
+			<att name="standard_name">salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">35.5</att>
+			<att name="colorBarMinimum">30.0</att>
+			<att name="coordinates">time altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		
+		<dataVariable>
+        <sourceName>u</sourceName> 
+        <destinationName>sea_water_x_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">U velocity component</att>
+			<att name="standard_name">sea_water_x_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>	
+		
+		<dataVariable>
+        <sourceName>v</sourceName> 
+        <destinationName>sea_water_y_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">V velocity component</att>
+			<att name="standard_name">sea_water_y_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">9.99999993381581E36</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>	
+		
+</dataset> 
+<dataset type="EDDTableFromDatabase" datasetID="IWBNetwork">
+   <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Databuoy</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>qcdBuoyData</tableName>
+	<orderBy>DataSourceID,RecordedTime</orderBy>
+    <reloadEveryNMinutes>14</reloadEveryNMinutes> 
+    <!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+    <addAttributes>
+	<att name="cdm_data_type">TimeSeries</att>
+	<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://www.isde.ie/#/464864ce-319b-4645-b4c9-f408d656fd76</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-12</att>
+        <att name="summary">Irish Weather Buoy Network</att>
+        <att name="title">Irish Weather Buoy Network</att>
+		<att name="subsetVariables">station_id, longitude, latitude</att> 			
+	</addAttributes>
+	<dataVariable>
+        <sourceName>SiteName</sourceName> 
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>siteLongitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>siteLatitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+    <dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+			<!--For date and timestamp database columns,
+       set dataType=double and units=seconds since 1970-01-01T00:00:00Z -->
+    </dataVariable>
+	<dataVariable>
+        <sourceName>AtmPressure</sourceName> 
+        <destinationName>AtmosphericPressure</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Pressure</att>
+			<att name="long_name">Air Pressure</att>
+			<att name="standard_name">air_pressure_at_sea_level</att>
+			<att name="units">mb</att>
+			<att name="colorBarMaximum">1030.0</att>
+			<att name="colorBarMinimum">970.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>WindDirection</sourceName> 
+        <destinationName>WindDirection</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Wind</att>
+			<att name="long_name">WindDirection</att>
+			<att name="Comment">The wind vane points into the oncoming wind and the 10 minute average wind direction is recorded.Reported Hourly</att>
+			<att name="standard_name">wind_from_direction</att>
+			<att name="units">degrees_true</att>
+			<att name="colorBarMaximum">359.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+			<att name="actual_range">0, 359</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>WindSpeed</sourceName> 
+        <destinationName>WindSpeed</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Wind</att>
+			<att name="long_name">WindSpeed</att>
+			<att name="Comment">The average wind speed (knots) for 10 minutes. Reported Hourly</att>
+			<att name="standard_name">wind_speed</att>
+			<att name="units">kn</att>
+			<att name="colorBarMaximum">200.0</att>
+			<att name="colorBarMinimum">1.8</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Gust</sourceName> 
+        <destinationName>Gust</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Wind</att>
+			<att name="long_name">Wind Gust Speed</att>
+			<att name="Comment">The maximum wind speed measured over 3 seconds. Reported Hourly</att>
+			<att name="standard_name">wind_speed_of_gust</att>
+			<att name="units">kn</att>
+			<att name="colorBarMaximum">200.0</att>
+			<att name="colorBarMinimum">1.8</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>WaveHeight</sourceName> 
+        <destinationName>WaveHeight</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Wave Height</att>
+			<att name="Comment">wave height is calcluated as four times the RMS (Root Mean Square Value) of the wave. This value then gives you the change in height.  The sensor measures this for 17.5 minutes and then takes an average.</att>
+			<att name="standard_name">sea_surface_swell_wave_significant_height</att>
+			<att name="units">m</att>
+			<att name="colorBarMaximum">25.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>WavePeriod</sourceName> 
+        <destinationName>WavePeriod</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Wave Period</att>
+			<att name="Comment">A record of 17.5 minutes of the number of times a wave passes through mean water level in an upward direction.</att>
+			<att name="standard_name">sea_surface_swell_wave_period</att>
+			<att name="units">s</att>
+			<att name="colorBarMaximum">20.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanDirection</sourceName> 
+        <destinationName>MeanWaveDirection</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Mean Wave Direction</att>
+			<att name="standard_name">mean_wave_direction</att>
+			<att name="units">degrees_true</att>
+		    <att name="colorBarMaximum">360.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+	</dataVariable>
+	<dataVariable>
+        <sourceName>Hmax</sourceName> 
+        <destinationName>Hmax</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Maximum Wave Height</att>
+			<att name="Comment">Maximum Wave Height</att>
+			<att name="standard_name">maximumwaveheight</att>
+			<att name="units">m</att>
+			<att name="colorBarMaximum">25.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>DryBulb</sourceName> 
+        <destinationName>AirTemperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+			<att name="long_name">Air Temperature</att>
+			<att name="standard_name">air_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="colorBarMaximum">30.0</att>
+			<att name="colorBarMinimum">-10.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>DewPoint</sourceName> 
+        <destinationName>DewPoint</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Meteorology</att>
+			<att name="long_name">DewPoint Temperature</att>
+			<att name="standard_name">dew_Point_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="colorBarMaximum">40.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SeaTemp</sourceName> 
+        <destinationName>SeaTemperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+			<att name="long_name">Sea Surface Temperature</att>
+			<att name="standard_name">sea_surface_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="colorBarMaximum">37.0</att>
+			<att name="colorBarMinimum">30.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>salinity</sourceName> 
+        <destinationName>salinity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Salinity</att>
+			<att name="long_name">Sea Water Salinity</att>
+			<att name="standard_name">sea_water_salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">32.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>RelativeHumidity</sourceName> 
+        <destinationName>RelativeHumidity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Meteorology</att>
+			<att name="long_name">Relative Humidity</att>
+			<att name="standard_name">relative_humidity</att>
+			<att name="units">percent</att>
+			<att name="colorBarMaximum">100.0</att>
+			<att name="colorBarMinimum">20.0</att>
+			<att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>QC_Flag</sourceName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">Quality Control Flags</att>
+        </addAttributes>
+    </dataVariable>  
+	</dataset>
+ 
+ <dataset type="EDDTableFromDatabase" datasetID="IWaveBNetwork">
+   <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Waverider</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>waveBuoyDatav32</tableName>
+    <orderBy>RecordedTime,ID</orderBy>	
+    <reloadEveryNMinutes>5</reloadEveryNMinutes> 
+    <!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+    <addAttributes>
+	<att name="cdm_data_type">TimeSeries</att>
+	<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-18</att>
+        <att name="summary">Irish Wave Buoys</att>
+        <att name="title">Irish Wave Buoys</att>
+		<att name="subsetVariables">station_id, longitude, latitude</att> 			
+	</addAttributes>
+    <dataVariable>
+        <sourceName>Longitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Latitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+    <dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>BuoyTitle</sourceName> 
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakPeriod</sourceName> 
+        <destinationName>PeakPeriod</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="standard_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakDirection</sourceName> 
+        <destinationName>PeakDirection</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">sea_surface_wave_to_direction</att>
+			<att name="standard_name">sea_surface_wave_to_direction</att>
+			<att name="units">degrees_true</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>UpcrossPeriod</sourceName> 
+        <destinationName>UpcrossPeriod</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Swell Wave Zero upcrossing Period</att>
+			<att name="standard_name">sea_surface_swell_wave_zero_upcrossing_period</att>
+			<att name="comment">The zero upcrossing period is defined as the time interval between consecutive occasions on which the surface height passes upward above the mean level. Swell waves are waves on the ocean surface.</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SigWaveHeight</sourceName> 
+        <destinationName>SignificantWaveHeight</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Wave Significant Height</att>
+			<att name="standard_name">sea_surface_wave_significant_height</att>
+			<att name="units">cm</att>
+			<att name="colorBarMaximum">1500.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SeaSurfaceTemp</sourceName> 
+        <destinationName>SeaTemperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+			<att name="long_name">Sea Surface Temperature</att>
+			<att name="standard_name">sea_surface_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">32.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Hmax</sourceName> 
+        <destinationName>Hmax</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Height of the highest wave</att>
+			<att name="standard_name">sea_surface_wave_height_of_highest_wave</att>
+			<att name="units">cm</att>
+			<att name="colorBarMaximum">1500.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>THmax</sourceName> 
+        <destinationName>THmax</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Period of the highest wave</att>
+			<att name="standard_name">sea_surface_wave_period_of_highest_wave</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurDirTo</sourceName> 
+        <destinationName>MeanCurDirTo</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Currents</att>
+			<att name="long_name">mean direction of sea water velocity</att>
+			<att name="standard_name">direction_of_sea_water_velocity</att>
+			<att name="comment">acoustic current meter mean current direction, defined as direction the water particles are moving towards</att>
+			<att name="units">degrees_true</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurSpeed</sourceName> 
+        <destinationName>MeanCurSpeed</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Currents</att> 
+			<att name="long_name">mean sea water speed</att>
+			<att name="standard_name">sea_water_speed</att>
+			<att name="comment">acoustic current meter mean current speed</att>
+			<att name="units">m/s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SigWaveHeight_qc</sourceName>
+		<destinationName>SignificantWaveHeight_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">SigWaveHeight Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakPeriod_qc</sourceName>
+		<destinationName>PeakPeriod_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">PeakPeriod Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakDirection_qc</sourceName>
+		<destinationName>PeakDirection_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">PeakDirection Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>UpcrossPeriod_qc</sourceName>
+		<destinationName>UpcrossPeriod_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">UpcrossPeriod Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SeaSurfaceTemp_qc</sourceName>
+		<destinationName>SeaTemperature_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">SeaTemperature Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Hmax_qc</sourceName>
+		<destinationName>Hmax_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">Hmax Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>THmax_qc</sourceName>
+		<destinationName>THmax_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">THmax Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurDirTo_qc</sourceName>
+		<destinationName>MeanCurDirTo_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">MeanCurDirTo Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurSpeed_qc</sourceName>
+		<destinationName>MeanCurSpeed_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">MeanCurSpeed Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>		
+</dataset>
+
+	<dataset type="EDDTableFromDatabase" datasetID="IWaveBNetwork30Min">
+    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Waverider</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>waveBuoyData30v32</tableName>
+    <orderBy>RecordedTime,ID</orderBy>	
+    <reloadEveryNMinutes>5</reloadEveryNMinutes> 
+    <!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+    <addAttributes>
+	<att name="cdm_data_type">TimeSeries</att>
+	<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-18</att>
+        <att name="summary">Irish Wave Buoys 30 minute</att>
+        <att name="title">Irish Wave Buoys 30 Min</att>
+		<att name="subsetVariables">station_id, longitude, latitude</att> 			
+	</addAttributes>
+    <dataVariable>
+        <sourceName>Longitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Latitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+    <dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>BuoyTitle</sourceName> 
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakPeriod</sourceName> 
+        <destinationName>PeakPeriod</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="standard_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakDirection</sourceName> 
+        <destinationName>PeakDirection</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">sea_surface_wave_to_direction</att>
+			<att name="standard_name">sea_surface_wave_to_direction</att>
+			<att name="units">degrees_true</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>UpcrossPeriod</sourceName> 
+        <destinationName>UpcrossPeriod</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Swell Wave Zero upcrossing Period</att>
+			<att name="standard_name">sea_surface_swell_wave_zero_upcrossing_period</att>
+			<att name="comment">The zero upcrossing period is defined as the time interval between consecutive occasions on which the surface height passes upward above the mean 
+			level. Swell waves are waves on the ocean surface.</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SigWaveHeight</sourceName> 
+        <destinationName>SignificantWaveHeight</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Wave Significant Height</att>
+			<att name="standard_name">sea_surface_wave_significant_height</att>
+			<att name="units">cm</att>
+			<att name="colorBarMaximum">1500.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SeaSurfaceTemp</sourceName> 
+        <destinationName>SeaTemperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+			<att name="long_name">Sea Surface Temperature</att>
+			<att name="standard_name">sea_surface_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">32.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Hmax</sourceName> 
+        <destinationName>Hmax</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Sea Surface Height of the highest wave</att>
+			<att name="standard_name">sea_surface_wave_height_of_highest_wave</att>
+			<att name="units">cm</att>
+			<att name="colorBarMaximum">1500.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>THmax</sourceName> 
+        <destinationName>THmax</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Period of the highest wave</att>
+			<att name="standard_name">sea_surface_wave_period_of_highest_wave</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>MeanCurDirTo</sourceName> 
+        <destinationName>MeanCurDirTo</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Currents</att>
+			<att name="long_name">mean direction of sea water velocity</att>
+			<att name="standard_name">direction_of_sea_water_velocity</att>
+			<att name="comment">acoustic current meter mean current direction, defined as direction the water particles are moving towards</att>
+			<att name="units">degrees_true</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurSpeed</sourceName> 
+        <destinationName>MeanCurSpeed</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Currents</att> 
+			<att name="long_name">mean sea water speed</att>
+			<att name="standard_name">sea_water_speed</att>
+			<att name="comment">acoustic current meter mean current speed</att>
+			<att name="units">m/s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SigWaveHeight_qc</sourceName>
+		<destinationName>SignificantWaveHeight_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">SigWaveHeight Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakPeriod_qc</sourceName>
+		<destinationName>PeakPeriod_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">PeakPeriod Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>PeakDirection_qc</sourceName>
+		<destinationName>PeakDirection_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">PeakDirection Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>UpcrossPeriod_qc</sourceName>
+		<destinationName>UpcrossPeriod_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">UpcrossPeriod Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>SeaSurfaceTemp_qc</sourceName>
+		<destinationName>SeaTemperature_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">SeaTemperature Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Hmax_qc</sourceName>
+		<destinationName>Hmax_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">Hmax Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>THmax_qc</sourceName>
+		<destinationName>THmax_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">THmax Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurDirTo_qc</sourceName>
+		<destinationName>MeanCurDirTo_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">MeanCurDirTo Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>MeanCurSpeed_qc</sourceName>
+		<destinationName>MeanCurSpeed_qc</destinationName>
+		<dataType>double</dataType>		
+        <addAttributes>
+            <att name="ioos_category">Quality</att>
+			<att name="long_name">MeanCurSpeed Quality Control Flag</att>
+			<att name="comment">0.0 = No quality control</att>
+        </addAttributes>
+    </dataVariable>			
+</dataset>
+<dataset type="EDDGridFromDap" datasetID="IMI_Model_Stats">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_MODEL_STATISTICS/MONTHLY_STATISTICS</sourceUrl>
+        <reloadEveryNMinutes>720</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+            <att name="title">Model Monthly Means</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">Irish Marine Institute modelled monthly means for Irish waters</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">70.0</att>
+            <att name="geospatial_lat_min">40.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution"> 0.1</att>
+            <att name="geospatial_lon_max">10.0</att>
+            <att name="geospatial_lon_min">-40.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+			<att name="license">[standard]</att>
+        </addAttributes>
+		<axisVariable>
+            <sourceName>time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 1970-01-01 00:00:00</att>
+                <att name="time_origin">1-Jan-1970 00:00:00</att>                 
+            </addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>latitude</sourceName>
+            <destinationName>latitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+        </axisVariable>		
+	    <axisVariable>
+            <sourceName>longitude</sourceName>
+            <destinationName>longitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+		</axisVariable>
+		
+		<dataVariable>
+        <sourceName>sea_surface_temperature</sourceName> 
+        <destinationName>sea_surface_temperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Temperature</att>
+			<att name="long_name">Monthly mean sea surface temperature</att>
+			<att name="standard_name">sea_surface_temperature</att>
+			<att name="units">C</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">20.0</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_bottom_temperature</sourceName> 
+        <destinationName>sea_bottom_temperature</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Temperature</att>
+			<att name="long_name">Monthly mean sea bottom temperature</att>
+			<att name="standard_name">sea_bottom_temperature</att>
+			<att name="units">C</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">15.0</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_surface_salinity</sourceName> 
+        <destinationName>sea_surface_salinity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Salinity</att>
+			<att name="long_name">Monthly mean sea surface salinity</att>
+			<att name="standard_name">sea_surface_salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">36.0</att>
+			<att name="colorBarMinimum">20</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>	
+		<dataVariable>
+        <sourceName>sea_bottom_salinity</sourceName> 
+        <destinationName>sea_bottom_salinity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Salinity</att>
+			<att name="long_name">Monthly mean sea bottom salinity</att>
+			<att name="standard_name">sea_bottom_salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">36.0</att>
+			<att name="colorBarMinimum">30</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_surface_x_velocity</sourceName> 
+        <destinationName>sea_surface_x_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">Monthly mean surface U velocity component</att>
+			<att name="standard_name">sea_surface_x_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1</att>
+			<att name="colorBarMinimum">-1</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_surface_y_velocity</sourceName> 
+        <destinationName>sea_surface_y_velocity</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">Monthly mean surface V velocity component</att>
+			<att name="standard_name">sea_surface_y_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1</att>
+			<att name="colorBarMinimum">-1</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>	
+		<dataVariable>
+        <sourceName>mixed_layer_depth</sourceName> 
+        <destinationName>mixed_layer_depth</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Other</att>
+			<att name="long_name">Monthly mean mixed layer depth</att>
+			<att name="standard_name">mixed_layer_depth</att>
+			<att name="units">m</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">100</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>significant_wave_height</sourceName> 
+        <destinationName>significant_wave_height</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Monthly mean significant wave height</att>
+			<att name="standard_name">significant_wave_height</att>
+			<att name="units">m</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">4</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>mean_wave_direction</sourceName> 
+        <destinationName>mean_wave_direction</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Monthly mean mean wave direction</att>
+			<att name="standard_name">mean_wave_direction</att>
+			<att name="units">degrees</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">360</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>mean_wave_period</sourceName> 
+        <destinationName>mean_wave_period</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Monthly mean absolute zero-crossing period</att>
+			<att name="standard_name">mean_wave_period</att>
+			<att name="units">s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">15</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>		
+</dataset>
+
+<dataset type="EDDGridFromDap" datasetID="IMI_EATL_WAVE">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_SWAN_EATL/AGGREGATE</sourceUrl>
+        <reloadEveryNMinutes>60</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+            <att name="title">East Atlantic SWAN Wave Model</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">Wave model data</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">70.0</att>
+            <att name="geospatial_lat_min">40.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution"> 0.1</att>
+            <att name="geospatial_lon_max">10.0</att>
+            <att name="geospatial_lon_min">-40.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+			<att name="license">[standard]</att>
+        </addAttributes>
+		<axisVariable>
+            <sourceName>time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 1970-01-01 00:00:00</att>
+                <att name="time_origin">1-Jan-1970 00:00:00</att>                 
+            </addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>eta_rho</sourceName>
+            <destinationName>latitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+        </axisVariable>		
+	    <axisVariable>
+            <sourceName>xi_rho</sourceName>
+            <destinationName>longitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+		</axisVariable>
+		
+		<dataVariable>
+        <sourceName>hsig</sourceName> 
+        <destinationName>significant_wave_height</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">significant wave height</att>
+			<att name="standard_name">significant_wave_height</att>
+			<att name="units">m</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">10</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+		<sourceName>hswell</sourceName> 
+        <destinationName>swell_wave_height</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">swell significant wave height</att>
+			<att name="standard_name">swell_significant_wave_height</att>
+			<att name="units">m</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">10</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>dir</sourceName> 
+        <destinationName>mean_wave_direction</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">mean wave direction</att>
+			<att name="standard_name">mean_wave_direction</att>
+			<att name="units">degrees</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">360</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>per</sourceName> 
+        <destinationName>mean_wave_period</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">absolute zero-crossing period</att>
+			<att name="standard_name">mean_wave_period</att>
+			<att name="units">s</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">15</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>		
+</dataset>
+<dataset type="EDDTableFromNcFiles" datasetID="IMI-WaveBuoyForecast">
+		<nDimensions>3</nDimensions>
+		<reloadEveryNMinutes>1044</reloadEveryNMinutes>
+		<fileDir>/opt/data/waveforecast/</fileDir>
+		<recursive>false</recursive>
+		<fileNameRegex>.*\.nc</fileNameRegex>
+		<metadataFrom>last</metadataFrom>
+		<preExtractRegex>^WP_</preExtractRegex> 
+		<postExtractRegex>\x2Enc$</postExtractRegex>
+		<extractRegex>.*</extractRegex>
+		<columnNameForExtract>stationID</columnNameForExtract>
+		<sortedColumnSourceName>time</sortedColumnSourceName>
+		<!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+		<addAttributes>
+		<att name="cdm_data_type">TimeSeries</att>
+		<att name="cdm_timeseries_variables">stationID, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="Metadata_Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="date_created">null</att>
+        <att name="date_issued">null</att>
+        <att name="id">null</att>
+        <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">EARTH SCIENCE &gt; Tide</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">http://www.marine.ie/</att>
+        <att name="subsetVariables">stationID, longitude, latitude, project_code</att>
+        <att name="summary">MI Wave Forecast at buoy locations</att>
+        <att name="title">MI Wave Forecast at buoy locations</att>
+    </addAttributes>
+	<dataVariable>
+        <sourceName>time</sourceName> 
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+		 <addAttributes>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+		 <att name="missing_value">-9999</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>lon</sourceName> 
+        <destinationName>longitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>lat</sourceName> 
+        <destinationName>latitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>	
+	<dataVariable>
+        <sourceName>stationID</sourceName> 
+        <destinationName>stationID</destinationName>
+        <dataType>String</dataType>
+		<addAttributes>
+		    <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+		</addAttributes>
+    </dataVariable>	
+    <dataVariable>
+        <sourceName>hsig</sourceName> 
+        <destinationName>significant_wave_height</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Surface Waves</att>
+			 <att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>per</sourceName> 
+        <destinationName>mean_wave_period</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Surface Waves</att>
+			 <att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>dir</sourceName> 
+        <destinationName>mean_wave_direction</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Surface Waves</att>
+			 <att name="units">degrees</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>wpwr</sourceName> 
+        <destinationName>wave_power_per_unit_crest_length</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+			 <att name="ioos_category">Surface Waves</att>
+			 <att name="units">kW/m</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>tp</sourceName> 
+        <destinationName>peak_period</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="standard_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+			<att name="comment">tp peak period</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>te</sourceName> 
+        <destinationName>energy_period</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Surface Waves</att>
+			<att name="long_name">Wave energy period</att>
+			<att name="standard_name">sea_surface_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment</att>
+			<att name="units">s</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>project_code</sourceName> 
+        <destinationName>project_code</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+           <att name="ioos_category">Other</att>
+	   <att name="long_name">project_code</att>
+        </addAttributes>
+    </dataVariable>
+</dataset>
+<dataset type="EDDTableFromNcFiles" datasetID="GFS-WeatherTimeSeries">
+		<nDimensions>3</nDimensions>
+		<reloadEveryNMinutes>1044</reloadEveryNMinutes>
+		<fileDir>/opt/data/gfsforecast/</fileDir>
+		<recursive>false</recursive>
+		<fileNameRegex>.*\.nc</fileNameRegex>
+		<metadataFrom>last</metadataFrom>
+		<preExtractRegex>^GFS_</preExtractRegex> 
+		<postExtractRegex>\x2Enc$</postExtractRegex>
+		<extractRegex>.*</extractRegex>
+		<columnNameForExtract>stationID</columnNameForExtract>
+		<sortedColumnSourceName>time</sortedColumnSourceName>
+		<!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+		<addAttributes>
+		<att name="cdm_data_type">TimeSeries</att>
+		<att name="cdm_timeseries_variables">stationID, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="Metadata_Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="date_created">null</att>
+        <att name="date_issued">null</att>
+        <att name="id">null</att>
+        <att name="infoUrl">http://www.emc.ncep.noaa.gov/index.php?branch=GFS</att>
+        <att name="institution">NOAA/NCEP</att>
+        <att name="keywords">EARTH SCIENCE &gt; Weather</att>
+        <att name="license">see background</att>
+        <att name="sourceUrl">http://www.marine.ie/</att>
+        <att name="subsetVariables">stationID, longitude, latitude</att>
+        <att name="summary">GFS weather forecast at selected locations</att>
+        <att name="title">GFS weather forecast at selected locations</att>
+    </addAttributes>
+	<dataVariable>
+        <sourceName>time</sourceName> 
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+		 <addAttributes>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+		 <att name="missing_value">-9999</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>lon</sourceName> 
+        <destinationName>longitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>lat</sourceName> 
+        <destinationName>latitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>	
+	<dataVariable>
+        <sourceName>stationID</sourceName> 
+        <destinationName>stationID</destinationName>
+        <dataType>String</dataType>
+		<addAttributes>
+		    <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+			<att name="cf_role">timeseries_id</att>
+		</addAttributes>
+    </dataVariable>	
+    <dataVariable>
+        <sourceName>pres</sourceName> 
+        <destinationName>AtmosphericPressure</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="ioos_category">Pressure</att>
+			<att name="long_name">Air Pressure</att>
+			<att name="standard_name">air_pressure_at_sea_level</att>
+			<att name="units">mb</att>
+			<att name="colorBarMaximum">1040.0</att>
+			<att name="colorBarMinimum">960.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>wspd</sourceName> 
+        <destinationName>WindSpeed</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="ioos_category">Wind</att>
+			<att name="long_name">WindSpeed</att>
+			<att name="standard_name">wind_speed</att>
+			<att name="units">kn</att>
+			<att name="colorBarMaximum">100.0</att>
+			<att name="colorBarMinimum">1.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>wdir</sourceName> 
+        <destinationName>WindDirection</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="ioos_category">Wind</att>
+			<att name="long_name">WindDirection</att>
+			<att name="standard_name">wind_from_direction</att>
+			<att name="units">degrees_true</att>
+			<att name="colorBarMaximum">359.0</att>
+			<att name="colorBarMinimum">0.0</att>
+			<att name="actual_range">0, 359</att>
+        </addAttributes>
+    </dataVariable>
+</dataset>  
+<dataset type="EDDGridFromDap" datasetID="IMI_NEATL">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_ROMS_HYDRO/AGGREGATE</sourceUrl>
+	<!--<sourceUrl>http://milas.marine.ie/thredds/dodsC/IMI_ROMS_HYDRO/CONNEMARA_250M_20L_3H/FORECAST/2012011715.nc</sourceUrl>-->
+        <reloadEveryNMinutes>720</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+			<att name="license">[standard]</att>
+            <att name="title">Irish Marine Institute Northeast Atlantic Model</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">NEATL</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">70.0</att>
+            <att name="geospatial_lat_min">40.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution"> 0.1</att>
+            <att name="geospatial_lon_max">10.0</att>
+            <att name="geospatial_lon_min">-40.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+        </addAttributes>
+		<dataVariable>
+        <sourceName>sea_surface_height</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Sea Level</att>
+			<att name="long_name">Sealevel Height</att>
+			<att name="standard_name">sea_surface_height</att>
+			<att name="units">m</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">3.0</att>
+			<att name="colorBarMinimum">-3.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+        <dataVariable>
+        <sourceName>sea_surface_temperature</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Temperature</att>
+			<att name="long_name">Water Temperature</att>
+			<att name="standard_name">sea_water_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">20</att>
+			<att name="colorBarMinimum">5</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+        <dataVariable>
+        <sourceName>sea_bottom_temperature</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Temperature</att>
+			<att name="long_name">Water Temperature</att>
+			<att name="standard_name">sea_water_temperature</att>
+			<att name="units">degree_C</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">14</att>
+			<att name="colorBarMinimum">1</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_surface_salinity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Salinity</att>
+			<att name="long_name">Salinity</att>
+			<att name="standard_name">salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">36.0</att>
+			<att name="colorBarMinimum">34.0</att>
+			<att name="coordinates">altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_bottom_salinity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Salinity</att>
+			<att name="long_name">Salinity</att>
+			<att name="standard_name">salinity</att>
+			<att name="units">PSU</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">35.6</att>
+			<att name="colorBarMinimum">34.0</att>
+			<att name="coordinates">altitude latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_surface_x_velocity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">U surface water velocity component</att>
+			<att name="standard_name">surface_sea_water_x_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>		
+		<dataVariable>
+        <sourceName>sea_surface_y_velocity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">V surface water velocity component</att>
+			<att name="standard_name">surface_sea_water_y_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>sea_bottom_x_velocity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">U bottom water velocity component</att>
+			<att name="standard_name">bottom_sea_water_x_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>		
+		<dataVariable>
+        <sourceName>sea_bottom_y_velocity</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Currents</att>
+			<att name="long_name">V bottom water velocity component</att>
+			<att name="standard_name">bottom_sea_water_y_velocity</att>
+			<att name="units">m/s</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">1.0</att>
+			<att name="colorBarMinimum">-1.0</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<dataVariable>
+        <sourceName>mixed_layer_depth</sourceName> 
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Other</att>
+			<att name="long_name">mixed layer depth (delta T of 0.5 degrees from surface)</att>
+			<att name="standard_name">mixed_layer_depth</att>
+			<att name="units">m</att>
+			<att name="missing_value">-9999</att>
+			<att name="colorBarMaximum">200</att>
+			<att name="colorBarMinimum">1</att>
+			<att name="coordinates">time latitude longitude</att>
+        </addAttributes>
+		</dataVariable>			
+</dataset>
+<dataset type="EDDGridFromDap" datasetID="BANTRY_PARTICLES">
+    <sourceUrl>http://milas.marine.ie/thredds/dodsC/BANTRY_PARTICLES/PARTICLE_TRACKS</sourceUrl>
+        <reloadEveryNMinutes>60</reloadEveryNMinutes>
+         <addAttributes> 
+            <att name="History"/>
+            <att name="Conventions"/>
+            <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+            <att name="institution">Irish Marine Institute</att>
+            <att name="title">Bantry Bay model particle track analysis</att>
+            <att name="cdm_data_type">Grid</att>
+            <att name="summary">Aggregate model particle track data</att>
+            <att name="geospatial_vertical_positive">up</att>
+            <att name="geospatial_vertical_units">m</att>
+            <att name="geospatial_lat_max">52.0</att>
+            <att name="geospatial_lat_min">51.0</att>
+            <att name="geospatial_lat_resolution">0.05</att>
+            <att name="geospatial_lat_units">degrees_north</att>
+            <att name="geospatial_lon_resolution">0.1</att>
+            <att name="geospatial_lon_max">-9.0</att>
+            <att name="geospatial_lon_min">-11.0</att>
+            <att name="geospatial_lon_units">degrees_east</att>
+        </addAttributes>
+		<axisVariable>
+            <sourceName>time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 2000-01-01 00:00:00</att>
+                <att name="time_origin">1-Jan-2000 00:00:00</att>                 
+            </addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>release</sourceName>
+			<destinationName>release_location</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Unknown</att>
+			</addAttributes>
+        </axisVariable>
+		<axisVariable>
+            <sourceName>eta_rho</sourceName>
+            <destinationName>latitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+        </axisVariable>		
+	    <axisVariable>
+            <sourceName>xi_rho</sourceName>
+            <destinationName>longitude</destinationName>
+			<addAttributes>
+			<att name="ioos_category">Location</att>
+			</addAttributes>
+		</axisVariable>
+		<dataVariable>
+        <sourceName>particle_hours</sourceName> 
+        <destinationName>particle_hours</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+		    <att name="ioos_category">Statistics</att>
+			<att name="long_name">particle transport probability</att>
+			<att name="standard_name">particle_hours</att>
+			<att name="missing_value">-999</att>
+			<att name="colorBarMaximum">200</att>
+			<att name="colorBarMinimum">0</att>
+			<att name="coordinates">release latitude longitude</att>
+        </addAttributes>
+		</dataVariable>
+		<!--<dataVariable>
+		<sourceName>ocean_time</sourceName>
+			<destinationName>time</destinationName>
+             <addAttributes>
+                <att name="units">sec since 1970-01-01 00:00:00</att>
+                <att name="time_origin">1-Jan-1970 00:00:00</att>                 
+            </addAttributes>
+		</dataVariable>-->
+</dataset>
+<dataset type="EDDTableFromDatabase" datasetID="miIbts">
+   <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IBTS</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+	<!--<connectionProperty name="instanceName">MSSQL</connectionProperty>-->
+    <connectionProperty name="user">erddap</connectionProperty>
+	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>ibts</tableName>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes> 
+    <addAttributes>
+	<att name="cdm_data_type">Trajectory</att>
+	<att name="cdm_trajectory_variables">SurveyCodeICES</att>
+	<!--<att name="cdm_timeseries_variables">station_id, longitude, latitude</att>-->
+        <att name="Conventions">COARDS, CF-1.6, Unidata Dataset Discovery v1.0</att>
+        <att name="infoUrl">http://catalog.marine.ie/geonetwork/srv/en/main.home</att>
+        <att name="institution">Marine Institute</att>
+        <att name="license">[standard]</att>
+        <att name="standard_name_vocabulary">CF-12</att>
+        <att name="summary">IBTS Trawl Surveys</att>
+        <att name="title">IBTS Trawl Surveys</att>
+		<att name="subsetVariables">SurveyCodeICES, longitude, latitude,Species_Code,Vessel_Code,Year, Haul_Code, Common_Name</att>
+		<att name="time_coverage_start">2011-01-01T00:00:00Z</att>
+		<att name="time_coverage_end">2012-01-01T00:00:00Z</att> 
+	</addAttributes>
+	<dataVariable>
+        <sourceName>SurveyCodeICES</sourceName> 
+        <destinationName>SurveyCodeICES</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">SurveyCodeICES</att>
+			<att name="cf_role">trajectory_id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Longitude</sourceName> 
+        <destinationName>longitude</destinationName>
+		<dataType>float</dataType>	
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Latitude</sourceName> 
+        <destinationName>latitude</destinationName>
+		<dataType>float</dataType>		
+    </dataVariable>
+	<dataVariable>
+        <sourceName>RecordedTime</sourceName> 
+        <destinationName>time</destinationName>
+		<dataType>double</dataType>
+        <addAttributes>
+		 <att name="long_name">Detection Time</att>
+		 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+		 <att name="actual_range">1.29384E9, 1.29384E9</att>
+        </addAttributes>
+			<!--For date and timestamp database columns,
+       set dataType=double and units=seconds since 1970-01-01T00:00:00Z -->
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Survey_Year</sourceName> 
+        <destinationName>Year</destinationName>
+		<dataType>String</dataType>
+        <addAttributes>
+		 <att name="ioos_category">Time</att>
+		 <att name="long_name">Year</att>
+        </addAttributes>
+			<!--For date and timestamp database columns,
+       set dataType=double and units=seconds since 1970-01-01T00:00:00Z -->
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Haul_Code</sourceName> 
+        <destinationName>Haul_Code</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+			<att name="long_name">Station ID</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>Vessel_Code</sourceName> 
+        <destinationName>Vessel_Code</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Other</att>
+			<att name="long_name">Vessel_Code</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Species_Code</sourceName> 
+        <destinationName>Species_Code</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Fish Species</att>
+			<att name="long_name">Species Code</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Common_Name</sourceName> 
+        <destinationName>Common_Name</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Fish Species</att>
+			<att name="long_name">Common_Name</att>
+        </addAttributes>
+    </dataVariable>
+		<dataVariable>
+        <sourceName>Length_Split</sourceName> 
+        <destinationName>Length_Split</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Other</att>
+			<att name="long_name">Juvenile Adult length split</att>
+			<att name="units">cm</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Total</sourceName> 
+        <destinationName>Total_Number_Fish_Per_Hour</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Fish Abundance</att>
+			<att name="long_name">Total_Number_Fish_Per_Hour</att>
+			<att name="units">count h-1</att>
+		<att name="colorBarMaximum">20000.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Group1</sourceName> 
+        <destinationName>Junvenile_Number_Fish_Per_Hour</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Fish Abundance</att>
+			<att name="long_name">Juvenile_Number_Fish_Per_Hour</att>
+			<att name="units">count h-1</att>
+		<att name="colorBarMaximum">10000.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>Group2</sourceName> 
+        <destinationName>Adult_Number_Fish_Per_Hour</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="ioos_category">Fish Abundance</att>
+			<att name="long_name">Adult_Number_Fish_Per_Hour</att>
+			<att name="units">count h-1</att>
+		<att name="colorBarMaximum">10000.0</att>
+			<att name="colorBarMinimum">0.0</att>
+        </addAttributes>
+    </dataVariable>
+	<defaultDataQuery>&Year=%222012%22</defaultDataQuery>
+	<defaultGraphQuery>longitude,latitude,Total_Number_Fish_Per_Hour&Year=%222012%22&Common_Name=%22European%20Hake%22&.draw=markers&.marker=5|5</defaultGraphQuery>
+	</dataset>
+<dataset type="EDDTableFromDatabase" datasetID="mestech">
+<sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/mestech</sourceUrl>
+    <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
+	<!--<connectionProperty name="instanceName">MSSQL</connectionProperty>-->
+    <connectionProperty name="user">mestech</connectionProperty>
+	<connectionProperty name="password">xT0rsion</connectionProperty>
+    <catalogName></catalogName>
+    <schemaName>dbo</schemaName>
+    <tableName>mestech</tableName>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes> 
+    <!-- sourceAttributes>
+    </sourceAttributes -->
+    <!-- Please specify the actual cdm_data_type (TimeSeries?) and related info below, for example...
+        <att name="cdm_timeseries_variables">station, longitude, latitude</att>
+        <att name="subsetVariables">station, longitude, latitude</att>
+    -->
+    <addAttributes>
+        <att name="cdm_data_type">Point</att>
+        <att name="Conventions">COARDS, CF-1.6, ACDD-1.3</att>
+        <att name="creator_name">Dublin City University</att>
+        <att name="creator_url">http://www.mestech.ie</att>
+        <att name="infoUrl">http://www.mestech.ie</att>
+        <att name="institution">Dublin City University</att>
+        <att name="keywords">battery, chemistry, city, clock, clock_date, clock_time, cond, data, date, density, depth, do_mgl, dublin, identifier, instrument, instrument_id, latitude, longitude, mestech, mgl, multiparameter, ocean, oceans,
+Oceans &gt; Ocean Chemistry &gt; pH,
+Oceans &gt; Salinity/Density &gt; Salinity,
+ph_mv, practical, reported, salinity, scale, sea, sea_water_ph_reported_on_total_scale, sea_water_practical_salinity, seawater, site, site_id, sonde, temperature, time, total, turbidity, university, water</att>
+        <att name="keywords_vocabulary">GCMD Science Keywords</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">(local Cassandra)</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="subsetVariables">instrument_id</att>
+        <att name="summary">Environmental Sensors. Dublin City University data from a local source.</att>
+        <att name="title">MESTECH Multiparameter Sonde data</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>instrument_id</sourceName>
+        <destinationName>instrument_id</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Instrument Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>time</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Time</att>
+            <att name="standard_name">time</att>
+            <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>battery</sourceName>
+        <destinationName>battery</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Battery Voltage</att>
+			 <att name="units">V</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>clock_date</sourceName>
+        <destinationName>clock_date</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Clock Date</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>clock_time</sourceName>
+        <destinationName>clock_time</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Clock Time</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>cond</sourceName>
+        <destinationName>conductivity</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Conductivity</att>
+			<att name="units">microSiemens/cm</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>depth</sourceName>
+        <destinationName>depth</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">8000.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="colorBarPalette">OceanDepth</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Depth</att>
+            <att name="standard_name">depth</att>
+            <att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>do_mgl</sourceName>
+        <destinationName>dissolved_oxygen</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Dissolved O2</att>
+            <att name="long_name">dissolved_oxygen</att>
+			<att name="units">mg/l</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lat</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Latitude</att>
+            <att name="standard_name">latitude</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lon</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Longitude</att>
+            <att name="standard_name">longitude</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>ph</sourceName>
+        <destinationName>ph</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">9.0</att>
+            <att name="colorBarMinimum" type="double">6.0</att>
+            <att name="ioos_category">Salinity</att>
+            <att name="long_name">Sea Water Ph Reported On Total Scale</att>
+            <att name="standard_name">sea_water_ph_reported_on_total_scale</att>
+			<att name="units">pH</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>ph_mv</sourceName>
+        <destinationName>ph_mv</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Salinity</att>
+            <att name="long_name">Sea Water pH mV</att>
+			<att name="units">mV</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>salinity</sourceName>
+        <destinationName>salinity</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">37.0</att>
+            <att name="colorBarMinimum" type="double">32.0</att>
+            <att name="ioos_category">Salinity</att>
+            <att name="long_name">Sea Water Practical Salinity</att>
+            <att name="standard_name">sea_water_practical_salinity</att>
+            <att name="units">ppt</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>site_id</sourceName>
+        <destinationName>site_id</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Site Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>temp</sourceName>
+        <destinationName>SeaTemperature</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+            <att name="long_name">Sea Surface Temperature</att>
+			<att name="units">degree_C</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>turbidity</sourceName>
+        <destinationName>turbidity</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Turbidity</att>
+			<att name="units">NTU</att>
+        </addAttributes>
+    </dataVariable>
+	<defaultDataQuery>&amp;time&gt;=now-1day</defaultDataQuery>
+	<defaultGraphQuery>longitude,latitude,SeaTemperature&amp;time>=now-1day&amp;.marker=5|5</defaultGraphQuery>
+</dataset>
+<dataset type="EDDTableFromCassandra" datasetID="spiddal_obs_ctd" active="true">
+    <sourceUrl>172.17.1.113</sourceUrl>
+    <keyspace>das</keyspace>
+    <tableName>ctd</tableName>
+    <partitionKeySourceNames>instrument_id</partitionKeySourceNames>
+    <clusterColumnSourceNames>time</clusterColumnSourceNames>
+    <indexColumnSourceNames></indexColumnSourceNames>
+    <maxRequestFraction>1</maxRequestFraction>
+    <columnNameQuotes></columnNameQuotes>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes>
+	<connectionProperty name="fetchSize">10000</connectionProperty>
+    <!-- sourceAttributes>
+    </sourceAttributes -->
+    <!-- Please specify the actual cdm_data_type (TimeSeries?) and related info below, for example...
+        <att name="cdm_timeseries_variables">station, longitude, latitude</att>
+        <att name="subsetVariables">station, longitude, latitude</att>
+    -->
+    <addAttributes>
+        <att name="cdm_data_type">Point</att>
+        <att name="Conventions">COARDS, CF-1.6, ACDD-1.3</att>
+        <att name="creator_name">Marine Institute</att>
+        <att name="creator_url">http://spiddal.marine.ie/gallery/</att>
+        <att name="infoUrl">http://spiddal.marine.ie/gallery/</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">altimetry, cond, conductivity, ctd, data, depth, identifier, institute, instrument, instrument_id, laboratory, latitude, local, longitude, marine, observatory, press, sal, satellite, sonde, soundv, source, temperature, time, ttime</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">(local Cassandra)</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="subsetVariables">instrument_id</att>
+        <att name="summary">Spiddal, Galway Bay Observatory Conductivity, Temperature, Depth (CTD) data. Marine Institute data from a local source.</att>
+        <att name="title">Galway Bay Observatory CTD data</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>instrument_id</sourceName>
+        <destinationName>instrument_id</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Instrument Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>time</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Time</att>
+            <att name="standard_name">time</att>
+            <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>cond</sourceName>
+        <destinationName>cond</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Cond</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>depth</sourceName>
+        <destinationName>depth</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">8000.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="colorBarPalette">OceanDepth</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Depth</att>
+            <att name="standard_name">depth</att>
+            <att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lat</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Latitude</att>
+            <att name="standard_name">latitude</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lon</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Longitude</att>
+            <att name="standard_name">longitude</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>press</sourceName>
+        <destinationName>press</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Press</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>sal</sourceName>
+        <destinationName>sal</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Sal</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>soundv</sourceName>
+        <destinationName>soundv</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Soundv</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>temp</sourceName>
+        <destinationName>temp</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Temperature</att>
+            <att name="long_name">Temperature</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>ttime</sourceName>
+        <destinationName>ttime</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Ttime</att>
+        </addAttributes>
+    </dataVariable>
+	<defaultDataQuery>&amp;time&gt;=now-30minutes</defaultDataQuery>
+	<defaultGraphQuery>longitude,latitude,temp&amp;time>=now-30minutes&amp;.marker=5|5</defaultGraphQuery>
+</dataset>
+<dataset type="EDDTableFromCassandra" datasetID="galway_obs_fluorometer" active="true">
+    <sourceUrl>172.17.1.113</sourceUrl>
+    <keyspace>das</keyspace>
+    <tableName>fluorometer</tableName>
+    <partitionKeySourceNames>instrument_id</partitionKeySourceNames>
+    <clusterColumnSourceNames>time</clusterColumnSourceNames>
+    <indexColumnSourceNames></indexColumnSourceNames>
+    <maxRequestFraction>1</maxRequestFraction>
+    <columnNameQuotes></columnNameQuotes>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes>
+    <!-- sourceAttributes>
+    </sourceAttributes -->
+    <!-- Please specify the actual cdm_data_type (TimeSeries?) and related info below, for example...
+        <att name="cdm_timeseries_variables">station, longitude, latitude</att>
+        <att name="subsetVariables">station, longitude, latitude</att>
+    -->
+    <addAttributes>
+        <att name="cdm_data_type">Point</att>
+        <att name="Conventions">COARDS, CF-1.6, ACDD-1.3</att>
+        <att name="creator_name">Marine Institute</att>
+        <att name="creator_url">http://spiddal.marine.ie/gallery/</att>
+        <att name="infoUrl">http://spiddal.marine.ie/gallery/</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">chl, chl_count, chlorophyll, clock, clock_date, clock_time, count, data, date, depth, flourometer, fluorescence, fluorescence_wavelength, fluorometer, identifier, instrument, instrument_id, latitude, longitude, marine, nephelometric, ntu, ntu_count, observatory, optical, optical properties, properties, spiddal, statistics, thermistor, time, turbidity, turbidity_wavelength, units, wavelength</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">http://spiddal.marine.ie/gallery/</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="subsetVariables">instrument_id</att>
+        <att name="summary">Galway Bay Observatory Fluorometer Data</att>
+        <att name="title">Galway Bay Observatory Fluorometer Data</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>instrument_id</sourceName>
+        <destinationName>instrument_id</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Instrument Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>time</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Time</att>
+            <att name="standard_name">time</att>
+            <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>chl_count</sourceName>
+        <destinationName>chl_count</destinationName>
+        <dataType>int</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">100.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+            <att name="long_name">Chl Count</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>clock_date</sourceName>
+        <destinationName>clock_date</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Clock Date</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>clock_time</sourceName>
+        <destinationName>clock_time</destinationName>
+        <dataType>String</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Clock Time</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>depth</sourceName>
+        <destinationName>depth</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">8000.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="colorBarPalette">OceanDepth</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Depth</att>
+            <att name="standard_name">depth</att>
+            <att name="units">m</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>fluorescence_wavelength</sourceName>
+        <destinationName>fluorescence_wavelength</destinationName>
+        <dataType>int</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Optical Properties</att>
+            <att name="long_name">Fluorescence Wavelength</att>
+			<att name="units">nm</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lat</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Latitude</att>
+            <att name="standard_name">latitude</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>lon</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Longitude</att>
+            <att name="standard_name">longitude</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>ntu_count</sourceName>
+        <destinationName>ntu_count</destinationName>
+        <dataType>int</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">100.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+            <att name="long_name">Ntu Count</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>thermistor</sourceName>
+        <destinationName>thermistor</destinationName>
+        <dataType>int</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+            <att name="long_name">Thermistor</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>turbidity_wavelength</sourceName>
+        <destinationName>turbidity_wavelength</destinationName>
+        <dataType>int</dataType>
+        <!-- sourceAttributes>
+        </sourceAttributes -->
+        <addAttributes>
+            <att name="ioos_category">Optical Properties</att>
+            <att name="long_name">Turbidity Wavelength</att>
+			<att name="units">nm</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+	<sourceName>ntu</sourceName>
+	<destinationName>turbidity</destinationName>
+	<dataType>double</dataType>
+	<addAttributes>
+		<att name="ioos_category">Optical Properties</att>
+		<att name="standard_name">sea_water_turbidity</att>
+		<att name="units">NTU</att>
+	</addAttributes>
+   </dataVariable>	
+    <dataVariable>
+	<sourceName>chl</sourceName>
+	<destinationName>chlorophyll</destinationName>
+	<dataType>double</dataType>
+	<addAttributes>
+		<att name="ioos_category">Optical Properties</att>
+		<att name="standard_name">mass_concentration_of_chlorophyll_in_sea_water</att>
+		<att name="units">ug/l</att>
+	</addAttributes>
+   </dataVariable>
+<defaultDataQuery>&amp;time&gt;=now-10minutes</defaultDataQuery>
+<defaultGraphQuery>longitude,latitude,turbidity&amp;time>=now-10minutes&amp;.marker=5|5</defaultGraphQuery>   
+</dataset>
+
+<dataset type="EDDTableFromCassandra" datasetID="IWaveBNetwork_spectral" active="true">
+    <sourceUrl>172.17.1.113</sourceUrl>
+    <keyspace>wave</keyspace>
+    <tableName>spectral</tableName>
+    <partitionKeySourceNames>buoy_id</partitionKeySourceNames>
+    <clusterColumnSourceNames>recordedtime</clusterColumnSourceNames>
+    <indexColumnSourceNames></indexColumnSourceNames>
+    <maxRequestFraction>1</maxRequestFraction>
+    <columnNameQuotes></columnNameQuotes>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes>
+    <addAttributes>
+        <att name="cdm_data_type">TimeSeries</att>
+        <att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="subsetVariables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.6, ACDD-1.3</att>
+        <att name="creator_name">Marine Institute</att>
+        <att name="creator_url">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="infoUrl">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">buoy, buoy_id, buoy_title, buoys, data, dirp, dsprp, hm0, identifier, institute, irish, latitude, longitude, marine, qcflag, quality, recordedtime, spectral, test, time, title, tm01, tm02, wave</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">(local Cassandra)</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="subsetVariables">buoy_id,station_id,latitude,longitude</att>
+        <att name="summary">Irish Wave Buoys Spectral Data</att>
+        <att name="title">Irish Wave Buoys Spectral Data</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>buoy_id</sourceName>
+        <destinationName>buoy_id</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Buoy Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>recordedtime</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Recordedtime</att>
+            <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>latitude</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Latitude</att>
+            <att name="standard_name">latitude</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>longitude</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Longitude</att>
+            <att name="standard_name">longitude</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>buoy_title</sourceName>
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+         <att name="ioos_category">Identifier</att>
+	 <att name="long_name">Station ID</att>
+	 <att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>Dirp</sourceName>
+        <destinationName>PeakDirection</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Dirp Direction for waves at peak of wave energy spectrum from which the waves are coming</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">PeakDirection</att>
+	 <att name="standard_name">sea_surface_wave_from_direction_at_variance_spectral_density_maximum</att>
+	 <att name="units">degrees_true</att>
+	 <att name="colorBarMaximum">359.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+	 <att name="actual_range">0, 359</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>dsprp</sourceName>
+        <destinationName>PeakSpread</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Dsprp Directional spread of waves at peak of wave energy spectrum</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">PeakSpread</att>
+	 <att name="standard_name">sea_surface_wave_from_direction_at_variance_spectral_density_maximum</att>
+	 <att name="units">degrees_true</att>
+	 <att name="colorBarMaximum">359.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+	 <att name="actual_range">0, 359</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>hm0</sourceName>
+        <destinationName>SignificantWaveHeight</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Hm0 (significant wave height) derived from wave energy spectrum</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">SignificantWaveHeight</att>
+         <att name="standard_name">sea_surface_wave_significant_height</att>
+	 <att name="units">m</att>
+	 <att name="colorBarMaximum">12.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>te</sourceName>
+        <destinationName>EnergyPeriod</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Te Energy period  derived from spectral moments, m-1 and m0</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">EnergyPeriod</att>
+         <att name="standard_name">sea_surface_wave_mean_period_from_variance_spectral_density_inverse_frequency_moment</att>
+	 <att name="units">s</att>
+	 <att name="colorBarMaximum">20.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>tm01</sourceName>
+        <destinationName>MeanWavePeriod_Tm01</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+	 <att name="comment">Tm01 (mean wave period) derived from spectral moments, m0 and m1</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">MeanWavePeriod_Tm01</att>
+         <att name="standard_name">sea_surface_wave_mean_period_from_variance_spectral_density_first_frequency_moment</att>
+	 <att name="units">s</att>
+	 <att name="colorBarMaximum">20.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>tm02</sourceName>
+        <destinationName>MeanWavePeriod_Tm02</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Tm02 (mean wave period) derived from spectral moments, m0 and m2</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">MeanWavePeriod_Tm02</att>
+         <att name="standard_name">sea_surface_wave_mean_period_from_variance_spectral_density_second_frequency_moment</att>
+	 <att name="units">s</att>
+	 <att name="colorBarMaximum">20.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>tp</sourceName>
+        <destinationName>PeakPeriod</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Tp Wave period of waves at peak of wave energy spectrum</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">PeakPeriod</att>
+         <att name="standard_name">sea_surface_wave_period_at_variance_spectral_density_maximum</att>
+	 <att name="units">s</att>
+	 <att name="colorBarMaximum">20.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>qcflag</sourceName>
+        <destinationName>qcflag</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">1.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+            <att name="long_name">Qcflag</att>
+        </addAttributes>
+    </dataVariable>
+  <defaultDataQuery>&amp;time&gt;=now-3day</defaultDataQuery>
+  <defaultGraphQuery>longitude,latitude,SignificantWaveHeight&amp;time>=now-3day&amp;.marker=5|5</defaultGraphQuery>
+</dataset>
+<dataset type="EDDTableFromErddap" datasetID="argoFloats" active="true">
+    <sourceUrl>https://erddap3.marine.ie/erddap/tabledap/argoFloats</sourceUrl>
+</dataset>
+<!--<dataset type="EDDTableFromMultidimNcFiles" datasetID="argoFloats" active="true">
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes>
+    <updateEveryNMillis>10000</updateEveryNMillis>
+    <fileDir>/opt/data/argos/</fileDir>
+    <fileNameRegex>.*.nc</fileNameRegex>
+    <recursive>true</recursive>
+    <pathRegex>.*</pathRegex>
+    <metadataFrom>last</metadataFrom>
+    <preExtractRegex>^.</preExtractRegex>
+    <postExtractRegex>.nc$</postExtractRegex>
+    <extractRegex>.*</extractRegex>
+    <columnNameForExtract>fileNumber</columnNameForExtract>
+    <sortFilesBySourceNames>FLOAT_SERIAL_NO JULD</sortFilesBySourceNames>
+    <fileTableInMemory>false</fileTableInMemory>
+    <accessibleViaFiles>true</accessibleViaFiles>
+    <removeMVRows>true</removeMVRows>
+    <addAttributes>
+        <att name="cdm_altitude_proxy">pres</att>
+        <att name="cdm_data_type">TrajectoryProfile</att>
+        <att name="cdm_trajectory_variables">platform_number, project_name, pi_name, platform_type, float_serial_no</att>
+        <att name="cdm_profile_variables">cycle_number, data_type, format_version, handbook_version, reference_date_time, date_creation, date_update, direction, data_center, dc_reference, data_state_indicator, data_mode, firmware_version, wmo_inst_type, time, time_qc, time_location, latitude, longitude, position_qc, positioning_system, profile_pres_qc, profile_temp_qc, profile_psal_qc, vertical_sampling_scheme</att>
+        <att name="subsetVariables">platform_number, project_name, pi_name, platform_type, float_serial_no, cycle_number, data_type, format_version, handbook_version, reference_date_time, date_creation, date_update, direction, data_center, dc_reference, data_state_indicator, data_mode, firmware_version, wmo_inst_type, time, time_qc, time_location, latitude, longitude, position_qc, positioning_system, profile_pres_qc, profile_temp_qc, profile_psal_qc, vertical_sampling_scheme</att>
+        <att name="Conventions">Argo-3.1, CF-1.6, COARDS, ACDD-1.3</att>
+        <att name="creator_email">support@argo.net</att>
+        <att name="creator_name">Argo</att>
+        <att name="creator_url">http://www.argo.net/</att>
+        <att name="history"></att>
+        <att name="infoUrl">http://www.argo.net/</att>
+        <att name="institution">Argo</att>
+        <att name="keywords">adjusted, argo, array, assembly, best, centre, centres, charge, coded, CONFIG_MISSION_NUMBER, contains, coriolis, creation, currents, cycle, CYCLE_NUMBER, data, DATA_CENTRE, DATA_MODE, DATA_STATE_INDICATOR, DATA_TYPE, date, DATE_CREATION, DATE_UPDATE, day, days, DC_REFERENCE, degree, delayed, denoting, density, determined, direction, equals, error, estimate, file, firmware, FIRMWARE_VERSION, flag, float, FLOAT_SERIAL_NO, format, FORMAT_VERSION, gdac, geostrophic, global, handbook, HANDBOOK_VERSION, have, identifier, in-situ, instrument, investigator, its, its-90, JULD, JULD_LOCATION, JULD_QC, julian, latitude, level, longitude, missions, mode, name, number, ocean, oceanography, oceans,
+Oceans &gt; Ocean Pressure &gt; Water Pressure,
+Oceans &gt; Ocean Temperature &gt; Water Temperature,
+Oceans &gt; Salinity/Density &gt; Salinity,
+passed, performed, PI_NAME, PLATFORM_NUMBER, PLATFORM_TYPE, position, POSITION_QC, positioning, POSITIONING_SYSTEM, practical, pres, PRES_ADJUSTED, PRES_ADJUSTED_ERROR, PRES_ADJUSTED_QC, PRES_QC, pressure, principal, process, processing, profile, PROFILE_PRES_QC, PROFILE_PSAL_QC, PROFILE_TEMP_QC, profiles, project, PROJECT_NAME, psal, PSAL_ADJUSTED, PSAL_ADJUSTED_ERROR, PSAL_ADJUSTED_QC, PSAL_QC, quality, rdac, real, real time, real-time, realtime, reference, REFERENCE_DATE_TIME, regional, relative, salinity, sampling, scale, scheme, sea, sea level, sea-level, sea_water_practical_salinity, sea_water_pressure, sea_water_temperature, seawater, serial, situ, station, statistics, system, TEMP, TEMP_ADJUSTED, TEMP_ADJUSTED_ERROR, TEMP_ADJUSTED_QC, TEMP_QC, temperature, through, time, type, unique, update, values, version, vertical, VERTICAL_SAMPLING_SCHEME, water, WMO_INST_TYPE</att>
+        <att name="keywords_vocabulary">GCMD Science Keywords</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">(local files)</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="summary">
+Argo float vertical profiles from Coriolis Global Data Assembly Centres
+(GDAC). Argo is an international collaboration that collects high-quality
+temperature and salinity profiles from the upper 2000m of the ice-free
+global ocean and currents from intermediate depths. The data come from
+battery-powered autonomous floats that spend most of their life drifting
+at depth where they are stabilised by being neutrally buoyant at the
+"parking depth" pressure by having a density equal to the ambient pressure
+and a compressibility that is less than that of sea water. At present there
+are several models of profiling float used in Argo. All work in a similar
+fashion but differ somewhat in their design characteristics. At typically
+10-day intervals, the floats pump fluid into an external bladder and rise
+to the surface over about 6 hours while measuring temperature and salinity.
+Satellites or GPS determine the position of the floats when they surface,
+and the floats transmit their data to the satellites. The bladder then
+deflates and the float returns to its original density and sinks to drift
+until the cycle is repeated. Floats are designed to make about 150 such
+cycles.
+Data Management URL: http://www.argodatamgt.org/Documentation</att>
+        <att name="title">Argo Float Vertical Profiles</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>fileNumber</sourceName>
+        <destinationName>fileNumber</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">File Number</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATA_TYPE</sourceName>
+        <destinationName>data_type</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>FORMAT_VERSION</sourceName>
+        <destinationName>format_version</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>HANDBOOK_VERSION</sourceName>
+        <destinationName>handbook_version</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>REFERENCE_DATE_TIME</sourceName>
+        <destinationName>reference_date_time</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="conventions">null</att>
+            <att name="ioos_category">Time</att>
+            <att name="units">yyyyMMddHHmmss</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATE_CREATION</sourceName>
+        <destinationName>date_creation</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="conventions">null</att>
+            <att name="ioos_category">Time</att>
+            <att name="units">yyyyMMddHHmmss</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATE_UPDATE</sourceName>
+        <destinationName>date_update</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="conventions">null</att>
+            <att name="ioos_category">Time</att>
+            <att name="units">yyyyMMddHHmmss</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PLATFORM_NUMBER</sourceName>
+        <destinationName>platform_number</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="cf_role">trajectory_id</att>
+            <att name="ioos_category">Identifier</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PROJECT_NAME</sourceName>
+        <destinationName>project_name</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PI_NAME</sourceName>
+        <destinationName>pi_name</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>CYCLE_NUMBER</sourceName>
+        <destinationName>cycle_number</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="cf_role">profile_id</att>
+            <att name="colorBarMaximum" type="double">200.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DIRECTION</sourceName>
+        <destinationName>direction</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">360.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Currents</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATA_CENTRE</sourceName>
+        <destinationName>data_center</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DC_REFERENCE</sourceName>
+        <destinationName>dc_reference</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATA_STATE_INDICATOR</sourceName>
+        <destinationName>data_state_indicator</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Location</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>DATA_MODE</sourceName>
+        <destinationName>data_mode</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PLATFORM_TYPE</sourceName>
+        <destinationName>platform_type</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>FLOAT_SERIAL_NO</sourceName>
+        <destinationName>float_serial_no</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">100.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>FIRMWARE_VERSION</sourceName>
+        <destinationName>firmware_version</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>WMO_INST_TYPE</sourceName>
+        <destinationName>wmo_inst_type</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>JULD</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="conventions">null</att>
+            <att name="ioos_category">Time</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>JULD_QC</sourceName>
+        <destinationName>time_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>JULD_LOCATION</sourceName>
+        <destinationName>time_location</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="conventions">null</att>
+            <att name="ioos_category">Time</att>
+            <att name="resolution">null</att>
+            <att name="standard_name">time</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>LATITUDE</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>LONGITUDE</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>POSITION_QC</sourceName>
+        <destinationName>position_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>POSITIONING_SYSTEM</sourceName>
+        <destinationName>positioning_system</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PROFILE_PRES_QC</sourceName>
+        <destinationName>profile_pres_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PROFILE_TEMP_QC</sourceName>
+        <destinationName>profile_temp_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PROFILE_PSAL_QC</sourceName>
+        <destinationName>profile_psal_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>VERTICAL_SAMPLING_SCHEME</sourceName>
+        <destinationName>vertical_sampling_scheme</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+            <att name="ioos_category">Unknown</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>CONFIG_MISSION_NUMBER</sourceName>
+        <destinationName>config_mission_number</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">100.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PRES</sourceName>
+        <destinationName>pres</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">5000.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Sea Level</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PRES_QC</sourceName>
+        <destinationName>pres_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PRES_ADJUSTED</sourceName>
+        <destinationName>pres_adjusted</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">5000.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Sea Level</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PRES_ADJUSTED_QC</sourceName>
+        <destinationName>pres_adjusted_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PRES_ADJUSTED_ERROR</sourceName>
+        <destinationName>pres_aqdjusted_error</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">50.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>TEMP</sourceName>
+        <destinationName>temp</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">32.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Temperature</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>TEMP_QC</sourceName>
+        <destinationName>temp_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>TEMP_ADJUSTED</sourceName>
+        <destinationName>temp_adjusted</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">32.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Temperature</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>TEMP_ADJUSTED_QC</sourceName>
+        <destinationName>temp_adjusted_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>TEMP_ADJUSTED_ERROR</sourceName>
+        <destinationName>temp_adjusted_error</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">1.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PSAL</sourceName>
+        <destinationName>psal</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">37.0</att>
+            <att name="colorBarMinimum" type="double">32.0</att>
+            <att name="ioos_category">Salinity</att>
+            <att name="resolution">null</att>
+            <att name="standard_name">sea_water_practical_salinity</att>
+            <att name="units">PSU</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PSAL_QC</sourceName>
+        <destinationName>psal_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PSAL_ADJUSTED</sourceName>
+        <destinationName>psal_adjusted</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">37.0</att>
+            <att name="colorBarMinimum" type="double">32.0</att>
+            <att name="ioos_category">Salinity</att>
+            <att name="resolution">null</att>
+            <att name="standard_name">sea_water_practical_salinity</att>
+            <att name="units">PSU</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PSAL_ADJUSTED_QC</sourceName>
+        <destinationName>psal_adjusted_qc</destinationName>
+        <dataType>char</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">150.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>PSAL_ADJUSTED_ERROR</sourceName>
+        <destinationName>psal_adjusted_error</destinationName>
+        <dataType>float</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">1.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Statistics</att>
+            <att name="resolution">null</att>
+        </addAttributes>
+    </dataVariable>
+</dataset>-->
+
+<dataset type="EDDTableFromCassandra" datasetID="IWaveBNetwork_zerocrossing" active="true">
+    <sourceUrl>172.17.1.113</sourceUrl>
+    <keyspace>wave</keyspace>
+    <tableName>zerocrossing</tableName>
+    <partitionKeySourceNames>buoy_id</partitionKeySourceNames>
+    <clusterColumnSourceNames>recordedtime</clusterColumnSourceNames>
+    <indexColumnSourceNames></indexColumnSourceNames>
+    <maxRequestFraction>1</maxRequestFraction>
+    <columnNameQuotes></columnNameQuotes>
+    <reloadEveryNMinutes>1440</reloadEveryNMinutes>
+    <addAttributes>
+        <att name="cdm_data_type">TimeSeries</att>
+        <att name="cdm_timeseries_variables">station_id, longitude, latitude</att>
+        <att name="subsetVariables">station_id, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.6, ACDD-1.3</att>
+        <att name="creator_name">Marine Institute</att>
+        <att name="creator_url">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="infoUrl">http://www.isde.ie/#/55eb27e0-2fc3-4dab-9963-a99d12402a9e</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">buoy, buoy_id, buoy_title, buoys, data, hav, hmax, identifier, institute, irish, latitude, longitude, marine, qcflag, quality, recordedtime, zerocrossing, tav, thmax, time, title, tm01, tm02, wave</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">(local Cassandra)</att>
+        <att name="standard_name_vocabulary">CF Standard Name Table v29</att>
+        <att name="subsetVariables">buoy_id,station_id,latitude,longitude</att>
+        <att name="summary">Irish Wave Buoys Zero crossing Data</att>
+        <att name="title">Irish Wave Buoys Zero crossing Data</att>
+    </addAttributes>
+    <dataVariable>
+        <sourceName>buoy_id</sourceName>
+        <destinationName>buoy_id</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="ioos_category">Identifier</att>
+            <att name="long_name">Buoy Id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>recordedtime</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="ioos_category">Time</att>
+            <att name="long_name">Recordedtime</att>
+            <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+        </addAttributes>
+    </dataVariable>
+	    <dataVariable>
+        <sourceName>latitude</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">90.0</att>
+            <att name="colorBarMinimum" type="double">-90.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Latitude</att>
+            <att name="standard_name">latitude</att>
+            <att name="units">degrees_north</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>longitude</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">180.0</att>
+            <att name="colorBarMinimum" type="double">-180.0</att>
+            <att name="ioos_category">Location</att>
+            <att name="long_name">Longitude</att>
+            <att name="standard_name">longitude</att>
+            <att name="units">degrees_east</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>buoy_title</sourceName>
+        <destinationName>station_id</destinationName>
+        <dataType>String</dataType>
+        <addAttributes>
+         <att name="ioos_category">Identifier</att>
+	 <att name="long_name">Station ID</att>
+	 <att name="cf_role">timeseries_id</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>hmax</sourceName>
+        <destinationName>Hmax</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Hmax - Maximum wave height measured during observation period</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">Hmax</att>
+	 <att name="standard_name">sea_surface_wave_maximum_height</att>
+	 <att name="units">m</att>
+	 <att name="colorBarMaximum">12.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>thmax</sourceName>
+        <destinationName>HmaxPeriod</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">THmax - Period of maximum wave height measured during observation period</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">EnergyPeriod</att>
+         <att name="standard_name">sea_surface_wave_period_at_maximum_height</att>
+	 <att name="units">s</att>
+	 <att name="colorBarMaximum">20.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	<dataVariable>
+        <sourceName>hav</sourceName>
+        <destinationName>Havg</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Havg - Average height of all the upcrossing waves measured during observation period</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">Havg</att>
+	 <att name="standard_name">sea_surface_wave_mean_zero_upcrossing_height</att>
+	 <att name="units">m</att>
+	 <att name="colorBarMaximum">12.0</att>
+	 <att name="colorBarMinimum">0.0</att>
+	 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>tav</sourceName>
+        <destinationName>Tavg</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+         <att name="comment">Tavg - Average period of all the upcrossing waves measured during observation period</att>
+         <att name="ioos_category">Surface Waves</att>
+         <att name="long_name">Tavg</att>
+         <att name="standard_name">sea_surface_wave_mean_zero_upcrossing_period</att>
+		 <att name="units">s</att>
+		 <att name="colorBarMaximum">20.0</att>
+		 <att name="colorBarMinimum">0.0</att>
+		 <att name="missing_value">-999</att>
+        </addAttributes>
+    </dataVariable>
+	    <dataVariable>
+        <sourceName>qcflag</sourceName>
+        <destinationName>qcflag</destinationName>
+        <dataType>int</dataType>
+        <addAttributes>
+            <att name="colorBarMaximum" type="double">1.0</att>
+            <att name="colorBarMinimum" type="double">0.0</att>
+            <att name="ioos_category">Quality</att>
+            <att name="long_name">Qcflag</att>
+        </addAttributes>
+    </dataVariable>
+  <defaultDataQuery>&amp;time&gt;=now-3day</defaultDataQuery>
+  <defaultGraphQuery>longitude,latitude,Hmax&amp;time>=now-3day&amp;.marker=5|5</defaultGraphQuery>
+</dataset>
+
+<dataset type="EDDTableFromNcFiles" datasetID="IMI-TidePrediction_epa">
+                <nDimensions>3</nDimensions>
+                <reloadEveryNMinutes>1044</reloadEveryNMinutes>
+                <fileDir>/opt/data/epa_tide/</fileDir>
+                <recursive>false</recursive>
+                <fileNameRegex>.*\.nc</fileNameRegex>
+                <metadataFrom>last</metadataFrom>
+                <preExtractRegex>^TP_</preExtractRegex>
+                <postExtractRegex>\x2Enc$</postExtractRegex>
+                <extractRegex>.*</extractRegex>
+                <columnNameForExtract>stationID</columnNameForExtract>
+                <sortedColumnSourceName>time</sortedColumnSourceName>
+                <!--<altitudeMetersPerSourceUnit>1</altitudeMetersPerSourceUnit>-->
+                <addAttributes>
+                <att name="cdm_data_type">TimeSeries</att>
+                <att name="cdm_timeseries_variables">stationID, longitude, latitude</att>
+        <att name="Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="Metadata_Conventions">COARDS, CF-1.4, Unidata Dataset Discovery v1.0</att>
+        <att name="date_created">null</att>
+        <att name="date_issued">null</att>
+        <att name="id">null</att>
+        <att name="infoUrl">http://milas.marine.ie/thredds/</att>
+        <att name="institution">Marine Institute</att>
+        <att name="keywords">EARTH SCIENCE &gt; Tide</att>
+        <att name="license">[standard]</att>
+        <att name="sourceUrl">http://www.marine.ie/</att>
+        <att name="subsetVariables">stationID, longitude, latitude</att>
+        <att name="summary">MI Modelled Tide Predictions for EPA Beach stations </att>
+        <att name="title">EPA Beaches Model Predicted Tide Level</att>
+    </addAttributes>
+        <dataVariable>
+        <sourceName>time</sourceName>
+        <destinationName>time</destinationName>
+        <dataType>double</dataType>
+                 <addAttributes>
+                 <!--<att name="data_min" type="double">1325376000</att>
+                 <att name="data_max" type="double">1420070400</att>-->
+                 <att name="units">seconds since 1970-01-01T00:00:00Z</att>
+                 <att name="missing_value">-9999</att>
+        </addAttributes>
+    </dataVariable>
+                <dataVariable>
+        <sourceName>lon</sourceName>
+        <destinationName>longitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>
+        <dataVariable>
+        <sourceName>lat</sourceName>
+        <destinationName>latitude</destinationName>
+        <dataType>float</dataType>
+    </dataVariable>
+        <dataVariable>
+        <sourceName>stationID</sourceName>
+        <destinationName>stationID</destinationName>
+        <dataType>String</dataType>
+                <addAttributes>
+                    <att name="ioos_category">Identifier</att>
+                        <att name="long_name">Station ID</att>
+                        <att name="cf_role">timeseries_id</att>
+                </addAttributes>
+    </dataVariable>
+    <dataVariable>
+        <sourceName>sea_surface_height</sourceName>
+        <destinationName>sea_surface_height</destinationName>
+        <dataType>double</dataType>
+        <addAttributes>
+                         <att name="ioos_category">Sea Level</att>
+        </addAttributes>
+    </dataVariable>
+        <defaultDataQuery>&amp;time&gt;=now-1day&amp;time&lt;=now+2days</defaultDataQuery>
+        <defaultGraphQuery>longitude,latitude,sea_surface_height&amp;time&gt;=now-1day&amp;time&lt;=now+2days&amp;&amp;.marker=5|5</defaultGraphQuery>
+</dataset>
+
+</erddapDatasets>
+
