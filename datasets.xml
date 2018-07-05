@@ -187,8 +187,9 @@ Available Genera (and number of records): (error)
 <dataset type="EDDTableFromDatabase" datasetID="IrishNationalTideGaugeNetwork">	
    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IrishTides</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">ERDDAP</connectionProperty>
+	<!--Enter User Name and Password here if necessary to connect to DB, generic one below-->
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>IrishTidesData</tableName>
@@ -287,8 +288,8 @@ Available Genera (and number of records): (error)
 <dataset type="EDDTableFromDatabase" datasetID="IrishNationalTideGaugeNetworkRiverGauges">	
    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IrishTides</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">erddapUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>IrishTidesRiverGaugeCombinedData</tableName>
@@ -585,8 +586,8 @@ Available Genera (and number of records): (error)
 <dataset type="EDDTableFromDatabase" datasetID="IWBNetwork">
    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Databuoy</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">ERDDAPUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>qcdBuoyData</tableName>
@@ -838,8 +839,8 @@ Available Genera (and number of records): (error)
  <dataset type="EDDTableFromDatabase" datasetID="IWaveBNetwork">
    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Waverider</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">ERDDAPUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>waveBuoyDatav32</tableName>
@@ -1091,8 +1092,8 @@ Available Genera (and number of records): (error)
 	<dataset type="EDDTableFromDatabase" datasetID="IWaveBNetwork30Min">
     <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/Waverider</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">ERDDAPUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>waveBuoyData30v32</tableName>
@@ -2117,8 +2118,8 @@ Available Genera (and number of records): (error)
    <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/IBTS</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
 	<!--<connectionProperty name="instanceName">MSSQL</connectionProperty>-->
-    <connectionProperty name="user">erddap</connectionProperty>
-	<connectionProperty name="password">Tmonat100</connectionProperty>
+    <connectionProperty name="user">ERDDAPUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>ibts</tableName>
@@ -2270,8 +2271,8 @@ Available Genera (and number of records): (error)
 <sourceUrl>jdbc:jtds:sqlserver://172.17.1.66:1433/mestech</sourceUrl>
     <driverName>net.sourceforge.jtds.jdbc.Driver</driverName>
 	<!--<connectionProperty name="instanceName">MSSQL</connectionProperty>-->
-    <connectionProperty name="user">mestech</connectionProperty>
-	<connectionProperty name="password">xT0rsion</connectionProperty>
+    <connectionProperty name="user">ERDDAPUser</connectionProperty>
+	<connectionProperty name="password">RealPassword</connectionProperty>
     <catalogName></catalogName>
     <schemaName>dbo</schemaName>
     <tableName>mestech</tableName>
